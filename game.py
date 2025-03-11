@@ -19,9 +19,9 @@ class Game():
                 self.mouse.update()
 
                 self.StateManager.update()
-                self.StateManager.handle_event(event)
+                self.StateManager.handle_event()
 
-                if event.type == pygame.QUIT: #or self.StateManager.should_quit:
+                if event.type == pygame.QUIT or self.StateManager.should_quit():
                     running = False
 
                 self.StateManager.render(screen)

@@ -18,24 +18,26 @@ class StateManager():
         mapselect = MapSelect(game)
         gameover = GameOverState(game)
         playing = PlayingState(game)
+        options = OptionsState(game)
 
         self.states["mainmenu"] = mainmenu
+        self.states["options"] = options
         self.states["pause"] = pause
         self.states["mapselect"] = mapselect
         self.states["gameover"] = gameover
-        self.states["playing"] = playing
+        self.states["play"] = playing
 
     def update(self):
         if self.next_state != self.current_state:
             self.current_state = self.next_state
             self.current_state_instance = self.states.get(self.current_state)
-        #print(self.current_state)
+        print(self.current_state)
         #print(self.current_state_instance)
-        #print(self.current_state_instance.buttons)
+        print(self.current_state_instance)
 
-    def handle_event(self, event):
+    def handle_event(self):
         if self.current_state_instance:
-            self.next_state = self.current_state_instance.handle_event(event)
+            self.next_state = self.current_state_instance.handle_event()
             #print("handled event")
 
     def render(self, screen):
@@ -45,5 +47,6 @@ class StateManager():
 
     def should_quit(self):
         if self.current_state == "quit":
+            print("quit")
             return True
         return False

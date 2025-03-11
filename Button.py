@@ -12,11 +12,11 @@ class Button:
         self.hovered = False
         self.pressed = False
 
-    def handle_event(self, event):
+    def handle_event(self):
         self.hovered = self.rect.collidepoint(self.game.mouse.x, self.game.mouse.y)
         if self.game.mouse.is_pressed():
             if self.hovered:
-                self.action()
+                return self.output
 
     def render(self, screen):
 
@@ -38,10 +38,6 @@ class Button:
         if self.rect.collidepoint(self.game.mouse.get_pos) and not self.game.mouse.is_pressed:
            return True
         return False
-
-    def action(self):
-        print(self.output)
-        return self.output
 
 class TowerSelectButton(Button):
 
