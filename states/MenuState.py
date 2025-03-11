@@ -9,19 +9,18 @@ class MenuState(State):
         self.x = x
         self.y = y
 
-    def handle_event(self):
+    def handle_event(self, event):
         for button in self.buttons:
-            button.update()
-            output = button.handle_event()
+            output = button.handle_event(event)
             if output:
                 return output
         return self.state
 
     def render(self, screen):
        # screen.blit(self.background, self.x, self.y)
-        screen.fill((255, 255, 255))
+        screen.fill((0, 0, 0))
         for button in self.buttons:
-            print("button rendered")
+            #print("button rendered")
             button.render(screen)
 
 

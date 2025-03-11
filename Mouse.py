@@ -10,6 +10,7 @@ class Mouse:
         self.x, self.y = pygame.mouse.get_pos()
         self.clicked = pygame.mouse.get_pressed()[0]
         self.right_clicked = pygame.mouse.get_pressed()[2]
+       #print(self.x, self.y, self.clicked)
 
     def get_position(self):
         return (self.x, self.y)

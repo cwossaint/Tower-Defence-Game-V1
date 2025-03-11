@@ -33,9 +33,9 @@ class StateManager():
         #print(self.current_state_instance)
         #print(self.current_state_instance.buttons)
 
-    def handle_event(self):
+    def handle_event(self, event):
         if self.current_state_instance:
-            self.next_state = self.current_state_instance.handle_event()
+            self.next_state = self.current_state_instance.handle_event(event)
             #print("handled event")
 
     def render(self, screen):

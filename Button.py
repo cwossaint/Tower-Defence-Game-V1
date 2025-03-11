@@ -4,7 +4,7 @@ class Button:
     def __init__(self, x, y, width, height, text, output, game):
         self.rect = pygame.Rect(x, y, width, height)
         self.text = text
-        self.out = output  # Action is a function to call when button is pressed
+        self.output = output  # Action is a function to call when button is pressed
         self.font = pygame.font.SysFont("Arial", 30)
         self.color = (0, 255, 0)  # Default color (green)
         self.hover_color = (255, 255, 0)  # Hover color (yellow)
@@ -12,20 +12,11 @@ class Button:
         self.hovered = False
         self.pressed = False
 
-    def update(self):
-        if self.is_hovering:
-            self.hovered = True
-        elif not self.is_hovering:
-            self.hovered = False
-        elif self.is_pressed:
-            self.pressed = True
-        elif not self.is_pressed:
-            self.pressed = False
-
-    def handle_event(self):
-        if self.pressed:
-            self.action()
-            print(self.output, + "returned")
+    def handle_event(self, event):
+        self.hovered = self.rect.collidepoint(self.game.mouse.x, self.game.mouse.y)
+        if self.game.mouse.is_pressed():
+            if self.hovered:
+                self.action()
 
     def render(self, screen):
 
@@ -49,8 +40,8 @@ class Button:
         return False
 
     def action(self):
+        print(self.output)
         return self.output
-
 
 class TowerSelectButton(Button):
 
