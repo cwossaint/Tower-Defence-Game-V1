@@ -1,68 +1,57 @@
 from states.State import *
+from Button import *
 
 class MenuState(State):
-    def __init__(self, game):
+    def __init__(self, game, x=0, y=0):
         super().__init__(game)
         self.buttons = []
+        self.background = None
+        self.x = x
+        self.y = y
 
-    def update(self):
-        # Handle input for navigating the menu
-        pass
+    def handle_event(self):
+        for button in self.buttons:
+            button.update()
+            output = button.handle_event()
+            if output:
+                return output
+        return self.state
 
-    def render(self):
-        # Draw the menu UI elements
-        pass
+    def render(self, screen):
+       # screen.blit(self.background, self.x, self.y)
+        screen.fill((255, 255, 255))
+        for button in self.buttons:
+            print("button rendered")
+            button.render(screen)
 
 
 class MainMenuState(MenuState):
     def __init__(self, game):
         super().__init__(game)
         self.state = "mainmenu"
+        self.create_buttons(game)
 
-    def update(self):
-        # Handle input for starting or quitting the game
-        pass
+    def create_buttons(self, game):
+        QuitGameButton = MenuButton(500, 100, 200, 100, "Quit Game", "quit", game)
+        PlayGameButton = MenuButton(500, 350, 200, 100, "Play", "play", game)
+        OptionsGameButton = MenuButton(500, 600, 200, 100, "Options", "options", game)
 
-    def render(self):
-        # Draw the main menu UI
-        pass
-
+        self.buttons.append(QuitGameButton)
+        self.buttons.append(PlayGameButton)
+        self.buttons.append(OptionsGameButton)
 
 class PauseState(MenuState):
     def __init__(self, game):
         super().__init__(game)
         self.state = "pause"
 
-    def update(self):
-        # Handle input for pausing or resuming the game
-        pass
-
-    def render(self):
-        # Draw the pause menu UI
-        pass
-
-
 class GameOverState(MenuState):
     def __init__(self, game):
         super().__init__(game)
-
-    def update(self):
-        # Handle input for restarting the game or quitting
-        pass
-
-    def render(self):
-        # Draw the game over UI
-        pass
+        self.state = "gameover"
 
 class MapSelect(MenuState):
     def __init__(self, game):
         super().__init__(game)
         self.state = "mapselect"
 
-    def update(self):
-        # Handle input for pausing or resuming the game
-        pass
-
-    def render(self):
-        # Draw the pause menu UI
-        pass
