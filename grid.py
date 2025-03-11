@@ -21,3 +21,5 @@ class Grid():
 
     def update_tower_placement(self, row, col, tower):
         self.array[row][col] = tower
+
+map_grid = Grid()
