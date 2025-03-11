@@ -1,5 +1,5 @@
 from states.State import *
-from Button import *
+from entities.Button import *
 
 class MenuState(State):
     def __init__(self, game, x=0, y=0):
