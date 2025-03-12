@@ -1,4 +1,5 @@
 from states.State import *
+from entities.Button import *
 
 class GameState(State):
     def __init__(self, game):
@@ -17,7 +18,11 @@ class PlayingState(GameState):
     def __init__(self, game):
         super().__init__(game)
         self.state = "playing"
+        self.buttons = []
 
+    def create_buttons():
+        pass
+    
     def update(self):
         # Update the game loop, move enemies, attack with towers, etc.
         pass
