@@ -18,4 +18,5 @@ class Map():
         x, y = self.game.mouse.get_position()
         row, col = self.grid_manager.screen_to_grid(x, y)
         nx, ny = self.grid_manager.grid_to_screen(row, col)
-        pygame.draw.rect(screen, (255, 0, 0), (nx * TILE_SIZE, ny * TILE_SIZE, TILE_SIZE, TILE_SIZE), 5)
+        print(nx, ny)
+        pygame.draw.rect(screen, (255, 0, 0), (nx, ny, TILE_SIZE, TILE_SIZE), 5)
