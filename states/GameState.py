@@ -7,7 +7,8 @@ class GameState(State):
     def __init__(self, game):
         super().__init__(game)
         self.grid_manager = GridManager(game)
-        self.guimanager = GUIManager()
+        self.guimanager = GUIManager(game)
+
 
     def update(self):
         # Update game elements, handle player inputs, etc.
@@ -15,6 +16,9 @@ class GameState(State):
 
     def render(self):
 
+        pass
+
+    def handle_event(self):
         pass
 
 
