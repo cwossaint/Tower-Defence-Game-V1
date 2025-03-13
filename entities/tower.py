@@ -1,7 +1,8 @@
+from tower_sprites import *
+
 class Tower():
     def __init__(self) -> None:
-        pass
-
+        
     def target_enemy():
         pass
 
