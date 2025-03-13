@@ -1,40 +1,32 @@
 from states.State import *
-from entities.Button import *
+from map import *
+from constants import *
 from GridManager import *
 from GUIManager import *
 
 class GameState(State):
     def __init__(self, game):
         super().__init__(game)
-        self.grid_manager = GridManager(game)
         self.guimanager = GUIManager(game)
-
+        self.grid_manager = GridManager(game, self.guimanager)
+        self.game_map = Map(game, self.grid_manager)
+        self.state = "playing"
 
     def update(self):
         # Update game elements, handle player inputs, etc.
         pass
 
-    def render(self):
-
+    def render(self, screen):
+        screen.fill((0, 0, 0))
+        self.guimanager.render(screen)
+        self.game_map.render(screen)
+        self.game_map.highlight_tile(screen)
         pass
 
     def handle_event(self):
-        pass
-
-
-class PlayingState(GameState):
-    def __init__(self, game):
-        super().__init__(game)
-        self.state = "playing"
-        self.buttons = []
-
-    def create_buttons():
-        pass
-    
-    def update(self):
-        # Update the game loop, move enemies, attack with towers, etc.
-        pass
-
-    def render(self):
-        # Draw the game objects, enemies, and towers
-        pass
+        x, y = self.game.mouse.get_position()
+        if x + 1 > GRID_SIZE:
+            self.guimanager.update()
+        if x + 1 < GRID_SIZE:
+            self.grid_manager.handle_event()
+        return "playing"

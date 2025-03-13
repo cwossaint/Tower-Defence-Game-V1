@@ -19,15 +19,10 @@ class GUIManager:
         self.buttons.append(dart_tower_button)
         self.buttons.append(cannon_tower_button)
 
-
-    def update(self):
-       
-        pass
-
     def unselect_tower(self):
         self.selected_tower = None
     
-    def select_tower(self):
+    def update(self):
         for button in self.buttons:
             tower = button.handle_event()
             if tower:
@@ -36,5 +31,3 @@ class GUIManager:
     def render(self, screen):
         for button in self.buttons:
             button.render(screen)
-        
-guimanager = GUIManager()

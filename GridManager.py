@@ -1,12 +1,12 @@
-from GUIManager import *
 from constants import *
 
 class GridManager():
-    def __init__(self, game) -> None:
+    def __init__(self, game, guimanager) -> None:
         self.arraysdict  = {}
         self.towers = {}
         self.array = None
         self.game = game
+        self.guimanager = guimanager
 
     def load_map_data(self, chosenmap):
         self.array = self.arraysdict.get(chosenmap)
@@ -23,16 +23,16 @@ class GridManager():
         pass
 
     def handle_event(self): 
-        if guimanager.selected_tower:
+        if self.guimanager.selected_tower:
             if self.game.mouse.is_pressed():
                 x, y = self.game.mouse.get_position()
                 row, col = self.screen_to_grid(x, y)
                 if self.is_tile_valid(row, col):
-                    tower = self.towers.get(guimanager.selected_tower)
+                    tower = self.towers.get(self.guimanager.selected_tower)
                     if tower:
                         self.place_tower(row, col, tower)
                         self.update_tower_placement(row, col, tower)
-                        guimanager.unselect_tower()
+                        self.guimanager.unselect_tower()
 
                 
     def update_tower_placement(self, row, col, tower):

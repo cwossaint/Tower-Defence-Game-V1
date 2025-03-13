@@ -17,7 +17,7 @@ class StateManager():
         pause = PauseState(game)
         mapselect = MapSelect(game)
         gameover = GameOverState(game)
-        playing = PlayingState(game)
+        playing = GameState(game)
         options = OptionsState(game)
 
         self.states["mainmenu"] = mainmenu
@@ -25,7 +25,7 @@ class StateManager():
         self.states["pause"] = pause
         self.states["mapselect"] = mapselect
         self.states["gameover"] = gameover
-        self.states["play"] = playing
+        self.states["playing"] = playing
 
     def update(self):
         if self.next_state != self.current_state:

@@ -35,7 +35,7 @@ class MainMenuState(MenuState):
 
     def create_buttons(self, game):
         QuitGameButton = MenuButton(500, 100, 200, 100, "Quit Game", "quit", game)
-        PlayGameButton = MenuButton(500, 350, 200, 100, "Play", "play", game)
+        PlayGameButton = MenuButton(500, 350, 200, 100, "Play", "playing", game)
         OptionsGameButton = MenuButton(500, 600, 200, 100, "Options", "options", game)
 
         self.buttons.append(QuitGameButton)
@@ -48,7 +48,7 @@ class PauseState(MenuState):
         self.state = "pause"
 
     def create_buttons(self, game):
-        ResumeButton = MenuButton(500, 100, 200, 100, "Resume", "play", game)
+        ResumeButton = MenuButton(500, 100, 200, 100, "Resume", "playing", game)
         BackToMainMenuButton = MenuButton(500, 350, 200, 100, "Back to Main Menu", "mainmenu", game)
 
         self.buttons.append(ResumeButton)
@@ -70,7 +70,7 @@ class MapSelect(MenuState):
 
     def create_buttons(self, game):
         QuitGameButton = MenuButton(500, 100, 200, 100, "Quit Game", "quit", game)
-        PlayGameButton = MenuButton(500, 350, 200, 100, "Play", "play", game)
+        PlayGameButton = MenuButton(500, 350, 200, 100, "Play", "playing", game)
         OptionsGameButton = MenuButton(500, 600, 200, 100, "Options", "options", game)
 
         self.buttons.append(QuitGameButton)
