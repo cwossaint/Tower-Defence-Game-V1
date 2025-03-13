@@ -1,13 +1,14 @@
 import pygame
+from constants import *
 
 class Button:
     def __init__(self, x, y, width, height, text, output, game):
         self.rect = pygame.Rect(x, y, width, height)
         self.text = text
-        self.output = output  # Action is a function to call when button is pressed
+        self.output = output 
         self.font = pygame.font.SysFont("Arial", 30)
-        self.color = (0, 255, 0)  # Default color (green)
-        self.hover_color = (255, 255, 0)  # Hover color (yellow)
+        self.color = LAPIS_BLUE
+        self.hover_color = DARK_YELLOW
         self.game = game
         self.hovered = False
         self.pressed = False
@@ -25,7 +26,7 @@ class Button:
         else:
             pygame.draw.rect(screen, self.color, self.rect)
 
-        text_surface = self.font.render(self.text, True, (255, 255, 255))
+        text_surface = self.font.render(self.text, True, WHITE)
         screen.blit(text_surface, (self.rect.x + (self.rect.width - text_surface.get_width()) // 2, 
                                    self.rect.y + (self.rect.height - text_surface.get_height()) // 2))
     

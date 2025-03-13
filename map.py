@@ -9,9 +9,9 @@ class Map():
     def render(self, screen):
         #screen.blit(self.sprite, (0, 0))
         for x in range(0, GRID_SIZE + 1, TILE_SIZE):
-            pygame.draw.line(screen, (139, 100, 64), (x, 0), (x, GRID_SIZE), 1)
+            pygame.draw.line(screen, BROWN, (x, 0), (x, GRID_SIZE), 1)
         for y in range(0, GRID_SIZE + 1, TILE_SIZE):
-            pygame.draw.line(screen, (139, 100, 64), (0, y), (GRID_SIZE, y), 1)
+            pygame.draw.line(screen, BROWN, (0, y), (GRID_SIZE, y), 1)
 
     def highlight_tile(self, screen):
         x, y = self.game.mouse.get_position()
@@ -24,11 +24,13 @@ class Map():
             for col in range(len(self.grid_manager.array[row])):
                 grid_value = self.grid_manager.get_tile_value(row, col)
                 if grid_value == 1:
-                    colour = (181, 101, 29)
+                    colour = LIGHT_BROWN
                 elif grid_value == 0:
-                    colour = (101, 67, 33) 
+                    colour = DARK_BROWN
+                elif grid_value == 3:
+                    colour = GRAY
                 elif grid_value == 2:
-                    colour = (34, 139, 34)
+                    colour = DARK_GREEN
                 else:
                     pass
                 x, y = self.grid_manager.grid_to_screen(row, col)

@@ -42,6 +42,7 @@ class StateManager():
 
     def render(self, screen):
         if self.current_state_instance:
+            screen.fill(BLACK)
             self.current_state_instance.render(screen)
             #print("rendered")
 

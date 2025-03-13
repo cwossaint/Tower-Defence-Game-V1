@@ -22,7 +22,6 @@ class MenuState(State):
 
     def render(self, screen):
        # screen.blit(self.background, self.x, self.y)
-        screen.fill((0, 0, 0))
         for button in self.buttons:
             #print("button rendered")
             button.render(screen)
