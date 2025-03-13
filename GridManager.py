@@ -19,6 +19,9 @@ class GridManager():
 
     def is_tile_valid(self, row, col):
         return self.array[row][col] == 0
+    
+    def get_tile_value(self, row, col):
+        return self.array[row][col]
 
     def update(self):
         pass

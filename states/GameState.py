@@ -18,6 +18,7 @@ class GameState(State):
 
     def render(self, screen):
         screen.fill((0, 0, 0))
+        self.game_map.draw_map_obstacles(screen)
         self.guimanager.render(screen)
         self.game_map.render(screen)
         x, y = self.game.mouse.get_position()
