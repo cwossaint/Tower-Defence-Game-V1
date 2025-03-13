@@ -1,9 +1,13 @@
 from constants import *
+from entities.tower import *
 
 class GridManager():
     def __init__(self, game, guimanager) -> None:
         self.arraysdict  = {}
-        self.towers = {}
+        self.towers = { "dart": Dart,
+                        "glue": Glue,
+                        "cannon": Cannon,
+                        "boomerang": Boomerang }
         self.array = None
         self.game = game
         self.guimanager = guimanager
@@ -19,8 +23,9 @@ class GridManager():
         pass
     
     def place_tower(self, row, col, tower_type):
-        
-        pass
+        tower_type = self.towers.get(tower_type)
+        x, y = self.grid_to_screen(row, col)
+        tower = tower_type(x, y)
 
     def handle_event(self): 
         if self.guimanager.selected_tower:

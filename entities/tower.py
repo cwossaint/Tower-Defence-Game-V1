@@ -4,14 +4,14 @@ class Tower():
 
     all_towers = []
 
-    def __init__(self) -> None:
+    def __init__(self, x, y) -> None:
         self.sprite = None
         self.range = None
         self.dmg = None
         self.cost = None
         self.attack_spd = None
-        self.x = None
-        self.y = None
+        self.x = x
+        self.y = y
         self.all_towers.append(self)
 
     def target_enemy():
