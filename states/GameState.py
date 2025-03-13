@@ -21,6 +21,8 @@ class GameState(State):
         self.guimanager.render(screen)
         self.game_map.render(screen)
         x, y = self.game.mouse.get_position()
+        for tower in Tower.all_towers:
+            tower.render(screen)
         if x + 1 < GRID_SIZE:
             self.game_map.highlight_tile(screen)
     

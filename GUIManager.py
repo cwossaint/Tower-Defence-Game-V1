@@ -27,6 +27,7 @@ class GUIManager:
             tower = button.handle_event()
             if tower:
                 self.selected_tower = tower
+
             
     def render(self, screen):
         for button in self.buttons:

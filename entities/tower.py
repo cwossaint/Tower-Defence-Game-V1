@@ -1,10 +1,10 @@
-from tower_sprites import *
+from entities.tower_sprites import *
 
 class Tower():
 
     all_towers = []
 
-    def __init__(self, x, y) -> None:
+    def __init__(self, x, y):
         self.sprite = None
         self.range = None
         self.dmg = None
@@ -18,7 +18,7 @@ class Tower():
         pass
 
     def render(self, screen):
-        screen.blit(self.sprite (self.x, self.y))
+        screen.blit(self.sprite, (self.x, self.y))
 
     def upgrade():
         pass
@@ -27,21 +27,21 @@ class Tower():
         pass
 
 class Cannon(Tower):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, x, y):
+        super().__init__(x, y)
         self.sprite = CANNONTOWERSPRITE
 
 class Dart(Tower):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, x, y):
+        super().__init__(x, y)
         self.sprite = DARTTOWERSPRITE
 
 class Glue(Tower):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, x, y) -> None:
+        super().__init__(x, y)
         self.sprite = GLUETOWERSPRITE
 
 class Boomerang(Tower):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, x, y) -> None:
+        super().__init__(x, y)
         self.sprite = BOOMERANGTOWERSPRITE

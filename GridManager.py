@@ -1,4 +1,5 @@
 from constants import *
+from level_data import *
 from entities.tower import *
 
 class GridManager():
@@ -8,7 +9,8 @@ class GridManager():
                         "glue": Glue,
                         "cannon": Cannon,
                         "boomerang": Boomerang }
-        self.array = None
+        
+        self.array = LEVEL1MAPARRAY
         self.game = game
         self.guimanager = guimanager
 
@@ -19,13 +21,11 @@ class GridManager():
         return self.array[row][col] == 0
 
     def update(self):
-        
         pass
     
-    def place_tower(self, row, col, tower_type):
-        tower_type = self.towers.get(tower_type)
+    def place_tower(self, row, col, chosentower):
         x, y = self.grid_to_screen(row, col)
-        tower = tower_type(x, y)
+        chosentower(x, y)
 
     def handle_event(self): 
         if self.guimanager.selected_tower:
