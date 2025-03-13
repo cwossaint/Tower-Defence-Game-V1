@@ -26,4 +26,22 @@ class Tower():
     def find_in_range():
         pass
 
-    
+class Cannon(Tower):
+    def __init__(self) -> None:
+        super().__init__()
+        self.sprite = CANNONTOWERSPRITE
+
+class Dart(Tower):
+    def __init__(self) -> None:
+        super().__init__()
+        self.sprite = DARTTOWERSPRITE
+
+class Glue(Tower):
+    def __init__(self) -> None:
+        super().__init__()
+        self.sprite = GLUETOWERSPRITE
+
+class Boomerang(Tower):
+    def __init__(self) -> None:
+        super().__init__()
+        self.sprite = BOOMERANGTOWERSPRITE
