@@ -1,0 +1,4 @@
+
+
+TILE_SIZE = 75
+GRID_SIZE = 750
