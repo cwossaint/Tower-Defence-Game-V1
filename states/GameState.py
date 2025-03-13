@@ -20,13 +20,15 @@ class GameState(State):
         screen.fill((0, 0, 0))
         self.guimanager.render(screen)
         self.game_map.render(screen)
-        self.game_map.highlight_tile(screen)
-        pass
+        x, y = self.game.mouse.get_position()
+        if x + 1 < GRID_SIZE:
+            self.game_map.highlight_tile(screen)
+    
 
     def handle_event(self):
         x, y = self.game.mouse.get_position()
-        if x + 1 > GRID_SIZE:
+        if (x + 1) > GRID_SIZE:
             self.guimanager.update()
-        if x + 1 < GRID_SIZE:
+        if (x + 1) < GRID_SIZE:
             self.grid_manager.handle_event()
         return "playing"

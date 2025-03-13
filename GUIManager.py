@@ -9,10 +9,10 @@ class GUIManager:
     
     def create_buttons(self):
         
-        glue_tower_button = TowerSelectButton(500, 100, 200, 100, "Glue", "glue", self.game)
-        boomerang_tower_button = TowerSelectButton(500, 100, 200, 100, "Boomerang", "boomerang", self.game)
-        dart_tower_button = TowerSelectButton(500, 100, 200, 100, "Dart", "dart", self.game)
-        cannon_tower_button = TowerSelectButton(500, 100, 200, 100, "Cannon", "cannon", self.game)
+        glue_tower_button = TowerSelectButton(800, 50, 200, 100, "Glue", "glue", self.game)
+        boomerang_tower_button = TowerSelectButton(800, 250, 200, 100, "Boomerang", "boomerang", self.game)
+        dart_tower_button = TowerSelectButton(800, 450, 200, 100, "Dart", "dart", self.game)
+        cannon_tower_button = TowerSelectButton(800, 650, 200, 100, "Cannon", "cannon", self.game)
 
         self.buttons.append(glue_tower_button)
         self.buttons.append(boomerang_tower_button)
