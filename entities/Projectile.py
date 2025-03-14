@@ -1,4 +1,5 @@
 import math
+import pygame
 
 class Projectile():
 
@@ -8,7 +9,7 @@ class Projectile():
         self.x = x
         self.y = y
         self.target = target
-        self.sprite = None
+        self.sprite = pygame.image
         self.damage = damage
         self.speed = 10
         self.all_projectiles.append(self)
@@ -20,9 +21,9 @@ class Projectile():
         screen.blit(self.sprite, (self.x, self.y))
 
     def move_towards_target(self):
-       
+        targetx, targety = self.target
         if self.target:
-            dx, dy = self.target.x - self.x, self.target.y - self.y
+            dx, dy = targetx - self.x, targety - self.y
             distance = math.sqrt(dx ** 2 + dy ** 2)
             self.x += (dx / distance) * self.speed
             self.y += (dy / distance) * self.speed

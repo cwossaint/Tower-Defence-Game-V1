@@ -30,7 +30,7 @@ class Tower():
                 closest_enemy = enemy
                 min_distance = distance
 
-        self.target = closest_enemy
+        self.target = (closest_enemy.x, closest_enemy.y)
 
     def fire_projectile(self):
         
