@@ -1,5 +1,6 @@
 from states.State import *
 from entities.Button import *
+from states.GameState import *
 
 class MenuState(State):
     def __init__(self, game, x=0, y=0):
@@ -34,7 +35,7 @@ class MainMenuState(MenuState):
 
     def create_buttons(self, game):
         QuitGameButton = MenuButton(500, 100, 200, 100, "Quit Game", "quit", game)
-        PlayGameButton = MenuButton(500, 350, 200, 100, "Play", "playing", game)
+        PlayGameButton = MenuButton(500, 350, 200, 100, "Play", "mapselect", game)
         OptionsGameButton = MenuButton(500, 600, 200, 100, "Options", "options", game)
 
         self.buttons.append(QuitGameButton)
@@ -62,20 +63,6 @@ class GameOverState(MenuState):
         BackToMainMenuButton = MenuButton(500, 100, 200, 100, "Back to Main Menu", "mainmenu", game)
         self.buttons.append(BackToMainMenuButton)
 
-class MapSelect(MenuState):
-    def __init__(self, game):
-        super().__init__(game)
-        self.state = "mapselect"
-
-    def create_buttons(self, game):
-        QuitGameButton = MenuButton(500, 100, 200, 100, "Quit Game", "quit", game)
-        PlayGameButton = MenuButton(500, 350, 200, 100, "Play", "playing", game)
-        OptionsGameButton = MenuButton(500, 600, 200, 100, "Options", "options", game)
-
-        self.buttons.append(QuitGameButton)
-        self.buttons.append(PlayGameButton)
-        self.buttons.append(OptionsGameButton)
-
 class OptionsState(MenuState):
     def __init__(self, game):
         super().__init__(game)
@@ -87,4 +74,25 @@ class OptionsState(MenuState):
 
         self.buttons.append(QuitGameButton)
         self.buttons.append(BackToMainMenuButton)
+
+class MapSelectState(MenuState):
+    def __init__(self, game, gamestate):
+        super().__init__(game)
+        self.gamestate = gamestate
+        self.state = "mapselect"
+
+    def create_buttons(self, game):
+        Map1Button = MenuButton(500, 100, 200, 100, "Map 1", "map1", game)
+        Map2Button = MenuButton(500, 300, 200, 100, "Map 2", "map2", game)
+
+        self.buttons.append(Map1Button)
+        self.buttons.append(Map2Button)
+
+    def handle_event(self):
+        selectedmap =  super().handle_event()
+        if selectedmap != self.state:
+            self.gamestate.grid_manager.load_map_data(selectedmap)
+            return "playing"
+        return self.state
+
 

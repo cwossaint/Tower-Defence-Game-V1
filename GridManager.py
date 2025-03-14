@@ -4,13 +4,14 @@ from entities.tower import *
 
 class GridManager():
     def __init__(self, game, guimanager) -> None:
-        self.arraysdict  = {}
         self.towers = { "dart": Dart,
                         "glue": Glue,
                         "cannon": Cannon,
                         "boomerang": Boomerang }
         
-        self.array = LEVEL1MAPARRAY
+        self.arraysdict = {"map1" : LEVEL1MAPARRAY, 
+                       "map2": LEVEL2MAPARRAY}
+        self.array = None
         self.game = game
         self.guimanager = guimanager
 

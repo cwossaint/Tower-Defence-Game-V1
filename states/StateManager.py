@@ -15,10 +15,10 @@ class StateManager():
 
         mainmenu = MainMenuState(game)
         pause = PauseState(game)
-        mapselect = MapSelect(game)
         gameover = GameOverState(game)
         playing = GameState(game)
         options = OptionsState(game)
+        mapselect = MapSelectState(game, playing)
 
         self.states["mainmenu"] = mainmenu
         self.states["options"] = options
