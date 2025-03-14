@@ -33,11 +33,21 @@ class Tower():
         self.target = closest_enemy
 
     def fire_projectile(self):
-        self.attack_timer += 1
+        
         if self.target and self.attack_timer >= self.attack_delay:
             projectile = Projectile(self.x, self.y, self.target, self.dmg)
             self.attack_timer = 0
 
+    def update(self):
+      
+        if not self.target:
+            self.find_target()
+
+        if self.target:
+            self.fire()
+
+        self.attack_timer += 1
+        self.fire_projectile()
        
 
     def render(self, screen):
