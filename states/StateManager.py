@@ -1,5 +1,5 @@
 from states.MenuState import *
-from states.GameState import *
+from GameState.GameState import *
 
 class StateManager():
 
@@ -27,27 +27,21 @@ class StateManager():
         self.states["gameover"] = gameover
         self.states["playing"] = playing
 
-    def update(self):
+    def update_state(self):
         if self.next_state != self.current_state:
             self.current_state = self.next_state
             self.current_state_instance = self.states.get(self.current_state)
-        #print(self.current_state)
-        #print(self.current_state_instance)
-        #print(self.current_state_instance)
 
-    def handle_event(self):
+    def update(self):
         if self.current_state_instance:
-            self.next_state = self.current_state_instance.handle_event()
-            #print("handled event")
+            self.next_state = self.current_state_instance.update()
 
     def render(self, screen):
         if self.current_state_instance:
             screen.fill(BLACK)
             self.current_state_instance.render(screen)
-            #print("rendered")
 
     def should_quit(self):
         if self.current_state == "quit":
-            print("quit")
             return True
         return False

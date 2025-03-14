@@ -1,5 +1,4 @@
-from GridManager import *
-from entities.nodes import *
+from states.GameState.GridManager import *
 
 class PathfindingManager():
     def __init__(self, grid_manager):
@@ -9,7 +8,6 @@ class PathfindingManager():
         self.current_point = None
 
     def generate_path(self):
-
         self.map_array = self.grid_manager.get_array()
         start_point = self.locate_start_point()
         self.current_point = start_point

@@ -1,7 +1,6 @@
 from constants import *
 from level_data import *
 from entities.tower import *
-from entities.nodes import *
 
 class GridManager():
     def __init__(self, game, guimanager) -> None:
@@ -32,7 +31,7 @@ class GridManager():
         x, y = self.grid_to_screen(row, col)
         chosentower(x, y)
 
-    def handle_event(self): 
+    def update(self): 
         if self.guimanager.selected_tower:
             if self.game.mouse.is_pressed():
                 x, y = self.game.mouse.get_position()

@@ -1,4 +1,4 @@
-from GridManager import *
+from states.GameState.GridManager import *
 from constants import *
 
 class Enemy():
@@ -14,7 +14,7 @@ class Enemy():
         self.sprite = pygame.image.load("images/enemy_sprites/grr.png")
         self.sprite = pygame.transform.scale(self.sprite, (TILE_SIZE, TILE_SIZE))
         self.current_direction = None
-        self.path_index = 0
+        self.directions_index = 0
         self.distance_travelled = 0
 
     def is_dead(self):
@@ -22,7 +22,6 @@ class Enemy():
             Enemy.all_enemies.remove(self)
 
     def move(self):
-
         if self.current_direction == "left":
             self.x -= self.speed
         elif self.current_direction == "right":
@@ -39,10 +38,10 @@ class Enemy():
 
     def determine_direction(self):
         if self.distance_travelled >= TILE_SIZE:
-            if self.path_index + 1 < len(self.path):
-                self.path_index += 1
+            if self.directions_index + 1 < len(self.path):
+                self.directions_index += 1
                 self.distance_travelled = 0
-        self.current_direction = self.path[self.path_index]
+        self.current_direction = self.path[self.directions_index]
 
     def take_damage(self, damage):
         self.health -= damage

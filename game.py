@@ -14,15 +14,11 @@ class Game():
         running = True
         while running:
 
+            self.StateManager.update_state()
             self.StateManager.update()
-            self.StateManager.handle_event()
 
             for event in pygame.event.get():
-
                 self.mouse.update()
-
-                
-
                 if event.type == pygame.QUIT or self.StateManager.should_quit():
                     running = False
 

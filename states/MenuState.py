@@ -13,7 +13,7 @@ class MenuState(State):
     def create_buttons(game):
         pass
 
-    def handle_event(self):
+    def update(self):
         for button in self.buttons:
             output = button.handle_event()
             if output:
@@ -82,14 +82,14 @@ class MapSelectState(MenuState):
 
     def create_buttons(self, game):
         Map1Button = MenuButton(500, 100, 200, 100, "Map 1", "map1", game)
-        Map2Button = MenuButton(500, 300, 200, 100, "Map 2", "map2", game)
+        Map2Button = MenuButton(500, 150, 200, 100, "Map 2", "map2", game)
         BackToMainMenuButton = MenuButton(500, 500, 200, 100, "Back to Main Menu", "mainmenu", game)
         
         self.buttons.append(Map1Button)
         self.buttons.append(Map2Button)
         self.buttons.append(BackToMainMenuButton)
 
-    def handle_event(self):
+    def update(self):
         output =  super().handle_event()
         if output == "mainmenu":
             return output
