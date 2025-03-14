@@ -1,6 +1,5 @@
 from states.State import *
 from entities.Button import *
-from states.GameState import *
 
 class MenuState(State):
     def __init__(self, game, x=0, y=0):
@@ -96,7 +95,6 @@ class MapSelectState(MenuState):
             return output
         elif output != self.state:
             self.gamestate.grid_manager.load_map_data(output)
-            self.gamestate.pathfinding_manager.generate_path()
             return "playing"
         return self.state
 

@@ -12,22 +12,19 @@ class PathfindingManager():
 
         self.map_array = self.grid_manager.get_array()
         start_point = self.locate_start_point()
-        end_point = self.locate_end_point()
         self.current_point = start_point
         current_direction = None
-        print("monkney")
 
         path = True
         while path:
             next_driection = self.locate_next_point(current_direction)
-            print("little fatty")
             if next_driection:
                 print(next_driection)
                 self.directions.append(next_driection)
                 current_direction = next_driection
             else: 
                 path = False
-        print(self.directions)
+        return self.directions
         
 
     def locate_start_point(self):
