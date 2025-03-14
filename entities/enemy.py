@@ -1,18 +1,27 @@
-class Enemy():
-    def __init__(self) -> None:
-        pass
+from GridManager import *
 
-    def is_dead():
-        pass
+class Enemy():
+
+    all_enemies = []
+
+    def __init__(self) -> None:
+        self.all_enemies.append(self)
+
+    def is_dead(self):
+        if self.health <= 0:
+            self.all_ememies.pop(self)
 
     def move():
+        pass
+
+    def update():
         pass
 
     def follow_path():
         pass
 
-    def take_damage():
-        pass
+    def take_damage(self, damage):
+        self.health -= damage
 
     def render():
         pass

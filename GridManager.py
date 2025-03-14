@@ -1,6 +1,7 @@
 from constants import *
 from level_data import *
 from entities.tower import *
+from entities.nodes import *
 
 class GridManager():
     def __init__(self, game, guimanager) -> None:
@@ -62,3 +63,5 @@ class GridManager():
             x, y = self.game.mouse.get_position()
             row, col = self.screen_to_grid(x, y)
             return row, col
+        
+        
