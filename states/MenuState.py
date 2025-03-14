@@ -84,14 +84,18 @@ class MapSelectState(MenuState):
     def create_buttons(self, game):
         Map1Button = MenuButton(500, 100, 200, 100, "Map 1", "map1", game)
         Map2Button = MenuButton(500, 300, 200, 100, "Map 2", "map2", game)
-
+        BackToMainMenuButton = MenuButton(500, 100, 200, 100, "Back to Main Menu", "mainmenu", game)
+        
         self.buttons.append(Map1Button)
         self.buttons.append(Map2Button)
+        self.buttons.append(BackToMainMenuButton)
 
     def handle_event(self):
-        selectedmap =  super().handle_event()
-        if selectedmap != self.state:
-            self.gamestate.grid_manager.load_map_data(selectedmap)
+        output =  super().handle_event()
+        if output == "mainmenu":
+            return output
+        elif output != self.state:
+            self.gamestate.grid_manager.load_map_data(output)
             return "playing"
         return self.state
 
