@@ -1,4 +1,7 @@
 from entities.tower_sprites import *
+from entities.enemy import *
+from entities.Projectile import *
+import math
 
 class Tower():
 
@@ -9,13 +12,33 @@ class Tower():
         self.range = None
         self.dmg = None
         self.cost = None
-        self.attack_spd = None
+        self.attack_delay = 10
+        self.attack_timer = 0
         self.x = x
         self.y = y
+        self.target = None
         self.all_towers.append(self)
 
-    def target_enemy():
-        pass
+    def find_target(self):
+
+        closest_enemy = None
+        min_distance = self.range
+
+        for enemy in Enemy.all_enemies:
+            distance = math.sqrt((enemy.x - self.x) ** 2 + (enemy.y - self.y) ** 2)
+            if distance < min_distance:
+                closest_enemy = enemy
+                min_distance = distance
+
+        self.target = closest_enemy
+
+    def fire_projectile(self):
+        self.attack_timer += 1
+        if self.target and self.attack_timer >= self.attack_delay:
+            projectile = Projectile(self.x, self.y, self.target, self.dmg)
+            self.attack_timer = 0
+
+       
 
     def render(self, screen):
         screen.blit(self.sprite, (self.x, self.y))
@@ -23,8 +46,6 @@ class Tower():
     def upgrade():
         pass
 
-    def find_in_range():
-        pass
 
 class Cannon(Tower):
     def __init__(self, x, y):
