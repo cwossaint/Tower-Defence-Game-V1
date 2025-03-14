@@ -44,25 +44,25 @@ class PathfindingManager():
         # Check right
         if col + 1 < len(self.map_array[row]):  
             if self.map_array[row][col + 1] == 1 and current_direction != "left":
-                self.current_point = (row, col + 1)  # Store as a tuple
+                self.current_point = (row, col + 1)  
                 return "right"
 
         # Check left
         if col - 1 >= 0:
             if self.map_array[row][col - 1] == 1 and current_direction != "right":
-                self.current_point = (row, col - 1)  # Store as a tuple
+                self.current_point = (row, col - 1) 
                 return "left"
 
         # Check down
         if row + 1 < len(self.map_array):
             if self.map_array[row + 1][col] == 1 and current_direction != "up":
-                self.current_point = (row + 1, col)  # Store as a tuple
+                self.current_point = (row + 1, col)  
                 return "down"
 
         # Check up
         if row - 1 >= 0:
             if self.map_array[row - 1][col] == 1 and current_direction != "down":
-                self.current_point = (row - 1, col)  # Store as a tuple
+                self.current_point = (row - 1, col) 
                 return "up"
 
         return None

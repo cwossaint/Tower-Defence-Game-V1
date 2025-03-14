@@ -23,7 +23,7 @@ class Map():
         for row in range(len(self.grid_manager.array)):
             for col in range(len(self.grid_manager.array[row])):
                 grid_value = self.grid_manager.get_tile_value(row, col)
-                if grid_value == 1:
+                if grid_value == 1 or grid_value == 4:
                     colour = LIGHT_BROWN
                 elif grid_value == 0:
                     colour = DARK_BROWN

@@ -90,7 +90,7 @@ class MapSelectState(MenuState):
         self.buttons.append(BackToMainMenuButton)
 
     def update(self):
-        output =  super().handle_event()
+        output =  super().update()
         if output == "mainmenu":
             return output
         elif output != self.state:

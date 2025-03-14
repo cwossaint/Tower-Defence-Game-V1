@@ -1,5 +1,5 @@
 from states.MenuState import *
-from GameState.GameState import *
+from states.GameState.GameState import *
 
 class StateManager():
 

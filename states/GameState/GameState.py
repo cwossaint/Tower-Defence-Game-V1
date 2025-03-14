@@ -3,8 +3,10 @@ from states.GameState.map import *
 from constants import *
 from states.GameState.GridManager import *
 from states.GameState.GUIManager import *
-from PathfinderManager import *
+from states.GameState.PathfinderManager import *
 from entities.enemy import *
+from states.GameState.EnemyWaveManager import *
+
 
 class GameState(State):
     def __init__(self, game):
@@ -13,6 +15,7 @@ class GameState(State):
         self.grid_manager = GridManager(game, self.guimanager)
         self.game_map = Map(game, self.grid_manager)
         self.pathfinding_manager = PathfindingManager(self.grid_manager)
+        self.enemy_wave_manager = EnemyWaveManager(self.pathfinding_manager, self.grid_manager)
         self.path = None
         self.state = "playing"
 
@@ -33,13 +36,16 @@ class GameState(State):
     
 
     def update(self):
-        if self.path:
-            x, y = self.game.mouse.get_position()
-            if (x + 1) > GRID_SIZE:
-                self.guimanager.update()
-            if (x + 1) < GRID_SIZE:
-                self.grid_manager.update()
-            for enemy in Enemy.all_enemies:
-              enemy.update()
+        if self.grid_manager.array != None:
+            self.enemy_wave_manager.update()
+
+        x, y = self.game.mouse.get_position()
+        if (x + 1) > GRID_SIZE:
+            self.guimanager.update()
+        if (x + 1) < GRID_SIZE:
+            self.grid_manager.update()
+
+        for enemy in Enemy.all_enemies:
+            enemy.update()
         return "playing"
         
