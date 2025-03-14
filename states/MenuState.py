@@ -84,7 +84,7 @@ class MapSelectState(MenuState):
     def create_buttons(self, game):
         Map1Button = MenuButton(500, 100, 200, 100, "Map 1", "map1", game)
         Map2Button = MenuButton(500, 300, 200, 100, "Map 2", "map2", game)
-        BackToMainMenuButton = MenuButton(500, 100, 200, 100, "Back to Main Menu", "mainmenu", game)
+        BackToMainMenuButton = MenuButton(500, 500, 200, 100, "Back to Main Menu", "mainmenu", game)
         
         self.buttons.append(Map1Button)
         self.buttons.append(Map2Button)
