@@ -96,6 +96,7 @@ class MapSelectState(MenuState):
             return output
         elif output != self.state:
             self.gamestate.grid_manager.load_map_data(output)
+            self.gamestate.pathfinding_manager.generate_path()
             return "playing"
         return self.state
 

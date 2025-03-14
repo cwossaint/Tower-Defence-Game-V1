@@ -3,6 +3,7 @@ from map import *
 from constants import *
 from GridManager import *
 from GUIManager import *
+from PathfinderManager import *
 
 class GameState(State):
     def __init__(self, game):
@@ -10,10 +11,10 @@ class GameState(State):
         self.guimanager = GUIManager(game)
         self.grid_manager = GridManager(game, self.guimanager)
         self.game_map = Map(game, self.grid_manager)
+        self.pathfinding_manager = PathfindingManager(self.grid_manager)
         self.state = "playing"
 
     def update(self):
-        # Update game elements, handle player inputs, etc.
         pass
 
     def render(self, screen):

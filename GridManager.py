@@ -64,4 +64,6 @@ class GridManager():
             row, col = self.screen_to_grid(x, y)
             return row, col
         
+    def get_array(self):
+        return self.array
         

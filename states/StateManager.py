@@ -31,9 +31,9 @@ class StateManager():
         if self.next_state != self.current_state:
             self.current_state = self.next_state
             self.current_state_instance = self.states.get(self.current_state)
-        print(self.current_state)
+        #print(self.current_state)
         #print(self.current_state_instance)
-        print(self.current_state_instance)
+        #print(self.current_state_instance)
 
     def handle_event(self):
         if self.current_state_instance:
