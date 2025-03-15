@@ -12,6 +12,8 @@ class Projectile():
         self.target = target
         self.sprite = None
         self.damage = damage
+        self.direction_x = None
+        self.direction_y = None
         self.speed = 10
         self.all_projectiles.append(self)
 
@@ -22,13 +24,20 @@ class Projectile():
         pygame.draw.circle(screen, RED, (self.x, self.y), 10)
         #screen.blit(self.sprite, (self.x, self.y))
 
-    def move_towards_target(self):
+    def calculate_direction(self):
         targetx, targety = self.target
         if self.target:
             dx, dy = targetx - self.x, targety - self.y
             distance = math.sqrt(dx ** 2 + dy ** 2)
-            self.x += (dx / distance) * self.speed
-            self.y += (dy / distance) * self.speed
+            self.direction_x = dx / distance
+            self.direction_y = dy/ distance
+
+    def move_towards_target(self):
+            self.x += self.direction_x * self.speed
+            self.y += self.direction_y * self.speed
 
     def update(self):
-        self.move_towards_target()
+        if self.direction_x and self.direction_y:
+            self.move_towards_target()
+        else:
+            self.calculate_direction()
