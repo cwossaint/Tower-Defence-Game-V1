@@ -32,7 +32,8 @@ class Map():
                 elif grid_value == 2:
                     colour = DARK_GREEN
                 else:
-                    pass
-                x, y = self.grid_manager.grid_to_screen(row, col)
-                pygame.draw.rect(screen, colour, (x, y, TILE_SIZE, TILE_SIZE))
- 
+                    colour = None
+                if colour:
+                    x, y = self.grid_manager.grid_to_screen(row, col)
+                    pygame.draw.rect(screen, colour, (x, y, TILE_SIZE, TILE_SIZE))
+    

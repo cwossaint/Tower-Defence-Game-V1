@@ -47,7 +47,6 @@ class Tower():
         if self.target and self.attack_timer >= self.attack_delay:
             self.target_coords = (self.target.x, self.target.y)
             projectile = Projectile(self.x, self.y, self.target_coords, self.dmg)
-            print(self.target)
             self.attack_timer = 0
 
     def update(self):
@@ -75,7 +74,7 @@ class Cannon(Tower):
         self.sprite = CANNONTOWERSPRITE
 
 class Dart(Tower):
-    def __init__(self, x, y, range=100, damage=10, attack_delay=10):
+    def __init__(self, x, y, range=1000, damage=10, attack_delay=1):
         super().__init__(x, y, range, damage, attack_delay)
         self.sprite = DARTTOWERSPRITE
 
