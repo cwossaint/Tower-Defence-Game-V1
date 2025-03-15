@@ -31,5 +31,4 @@ class Projectile():
             self.y += (dy / distance) * self.speed
 
     def update(self):
-        if self.active:
-            self.move_towards_target()
+        self.move_towards_target()
