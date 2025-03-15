@@ -7,11 +7,14 @@ class Tower():
 
     all_towers = []
 
-    def __init__(self, x, y):
+    def __init__(self, x, y, range=10, damage=10, attack_delay=10):
         self.sprite = None
         self.range = None
         self.dmg = None
         self.cost = None
+        self.range = range
+        self.damage = damage
+        self.attack_delay = attack_delay
         self.attack_delay = 10
         self.attack_timer = 0
         self.x = x

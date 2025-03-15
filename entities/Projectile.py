@@ -1,5 +1,6 @@
 import math
 import pygame
+from constants import *
 
 class Projectile():
 
@@ -9,7 +10,7 @@ class Projectile():
         self.x = x
         self.y = y
         self.target = target
-        self.sprite = pygame.image
+        self.sprite = None
         self.damage = damage
         self.speed = 10
         self.all_projectiles.append(self)
@@ -18,7 +19,8 @@ class Projectile():
         self.all_projectiles.remove(self)
 
     def render(self, screen):
-        screen.blit(self.sprite, (self.x, self.y))
+        pygame.draw.circle(screen, RED, (self.x, self.y), 10)
+        #screen.blit(self.sprite, (self.x, self.y))
 
     def move_towards_target(self):
         targetx, targety = self.target

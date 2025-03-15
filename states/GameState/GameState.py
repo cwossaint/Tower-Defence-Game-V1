@@ -1,6 +1,7 @@
 from states.State import *
 from states.GameState.map import *
 from constants import *
+from entities.tower import *
 from states.GameState.GridManager import *
 from states.GameState.GUIManager import *
 from states.GameState.PathfinderManager import *
@@ -31,6 +32,9 @@ class GameState(State):
         for enemy in Enemy.all_enemies:
             enemy.render(screen)
 
+        for projectile in Projectile.all_projectiles:
+            projectile.render(screen)
+
         if x + 1 < GRID_SIZE:
             self.game_map.highlight_tile(screen)
     
@@ -47,5 +51,10 @@ class GameState(State):
 
         for enemy in Enemy.all_enemies:
             enemy.update()
+        for tower in Tower.all_towers:
+            tower.update()
+        for projectile in Projectile.all_projectiles:
+            projectile.update()
+            
         return "playing"
         

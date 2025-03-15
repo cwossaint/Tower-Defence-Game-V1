@@ -1,6 +1,6 @@
+from entities.tower import *
 from constants import *
 from level_data import *
-from entities.tower import *
 
 class GridManager():
     def __init__(self, game, guimanager) -> None:
