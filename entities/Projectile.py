@@ -15,7 +15,7 @@ class Projectile():
         self.damage = damage
         self.direction_x = None
         self.direction_y = None
-        self.speed = 25
+        self.speed = 50
         self.all_projectiles.append(self)
 
     def destroy(self):
