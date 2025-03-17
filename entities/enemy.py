@@ -22,7 +22,8 @@ class Enemy():
 
     def is_dead(self):
         if self.health <= 0:
-            Enemy.all_enemies.remove(self)
+            if self in Enemy.all_enemies: 
+                Enemy.all_enemies.remove(self)
             return True
 
     def move(self):
