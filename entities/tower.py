@@ -10,7 +10,7 @@ class Tower():
     def __init__(self, x, y, range=100, damage=10, attack_delay=10):
         self.sprite = None
         self.range = None
-        self.dmg = None
+        self.dmg = 10
         self.cost = None
         self.range = range
         self.damage = damage
@@ -51,7 +51,7 @@ class Tower():
 
     def update(self):
       
-        if not self.target or self.find_distance(self.target) > self.range:
+        if not self.target or self.find_distance(self.target) > self.range or self.target.is_dead():
             self.find_target()
 
         if self.target:

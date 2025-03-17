@@ -1,17 +1,20 @@
 import pygame
 from constants import *
+from entities.Projectile import *
 
 class Enemy():
 
     all_enemies = []
 
-    def __init__(self, x, y, speed,  path):
+    def __init__(self, x, y, health, speed, path):
         self.all_enemies.append(self)
         self.x = x
         self.y = y
+        self.health = health
         self.path = path
         self.speed = speed
         self.sprite = pygame.image.load("images/enemy_sprites/grr.png")
+        self.rect = pygame.Rect(self.x, self.y, self.sprite.get_width(), self.sprite.get_height())
         self.sprite = pygame.transform.scale(self.sprite, (TILE_SIZE, TILE_SIZE))
         self.current_direction = None
         self.directions_index = 0
@@ -20,6 +23,7 @@ class Enemy():
     def is_dead(self):
         if self.health <= 0:
             Enemy.all_enemies.remove(self)
+            return True
 
     def move(self):
         if self.current_direction == "left":
@@ -31,10 +35,18 @@ class Enemy():
         elif self.current_direction == "down":
             self.y += self.speed
         self.distance_travelled += self.speed
-        
+        self.rect = pygame.Rect(self.x, self.y, self.sprite.get_width(), self.sprite.get_height())
+
+    def check_collision(self):
+        for projectile in Projectile.all_projectiles:
+            if pygame.Rect.colliderect(self.rect, projectile.rect):
+                print(self.health)
+                self.take_damage(projectile.damage)
+
     def update(self):
         self.determine_direction()
         self.move()
+        self.check_collision()
 
     def determine_direction(self):
         if self.distance_travelled >= TILE_SIZE:

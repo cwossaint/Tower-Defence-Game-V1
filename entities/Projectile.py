@@ -9,12 +9,13 @@ class Projectile():
     def __init__(self, x, y, target, damage) -> None:
         self.x = x
         self.y = y
+        self.rect = pygame.Rect(self.x, self.y, 20, 20)
         self.target = target
         self.sprite = None
         self.damage = damage
         self.direction_x = None
         self.direction_y = None
-        self.speed = 10
+        self.speed = 25
         self.all_projectiles.append(self)
 
     def destroy(self):
@@ -35,6 +36,7 @@ class Projectile():
     def move_towards_target(self):
             self.x += self.direction_x * self.speed
             self.y += self.direction_y * self.speed
+            self.rect = pygame.Rect(self.x, self.y, 20, 20)
 
     def update(self):
         if self.direction_x and self.direction_y:
