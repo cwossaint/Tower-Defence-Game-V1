@@ -18,6 +18,9 @@ class GameState(State):
         self.pathfinding_manager = PathfindingManager(self.grid_manager)
         self.enemy_wave_manager = EnemyWaveManager(self.pathfinding_manager, self.grid_manager)
         self.path = None
+        self.font = pygame.font.SysFont("Arial", 30)
+        self.cash = 20
+        self.lives = 100
         self.state = "playing"
 
     def render(self, screen):
@@ -37,6 +40,9 @@ class GameState(State):
 
         if x + 1 < GRID_SIZE:
             self.game_map.highlight_tile(screen)
+
+        #text_surface = self.font.render(self.text, True, WHITE)
+        #screen.blit(text_surface, (self.rect.x + (self.rect.width - text_surface.get_width()) // 2, 
     
 
     def update(self):

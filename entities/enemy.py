@@ -41,7 +41,7 @@ class Enemy():
     def check_collision(self):
         for projectile in Projectile.all_projectiles:
             if pygame.Rect.colliderect(self.rect, projectile.rect):
-                print(self.health)
+                projectile.destroy()
                 self.take_damage(projectile.damage)
 
     def update(self):

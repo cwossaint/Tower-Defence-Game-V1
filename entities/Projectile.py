@@ -19,7 +19,7 @@ class Projectile():
         self.all_projectiles.append(self)
 
     def destroy(self):
-        self.all_projectiles.remove(self)
+        Projectile.all_projectiles.remove(self)
 
     def render(self, screen):
         pygame.draw.circle(screen, RED, (self.x, self.y), 10)
@@ -41,5 +41,11 @@ class Projectile():
     def update(self):
         if self.direction_x and self.direction_y:
             self.move_towards_target()
+            if self.past_grid():
+                self.destroy()
         else:
             self.calculate_direction()
+
+    def past_grid(self):
+        if self.x > GRID_SIZE or self.x < 0 or self.y > GRID_SIZE or self.y < 0:
+            return True
