@@ -6,8 +6,9 @@ class Enemy():
 
     all_enemies = []
 
-    def __init__(self, x, y, health, speed, path):
+    def __init__(self, x, y, health, speed, path, game_data):
         self.all_enemies.append(self)
+        self.game_data = game_data
         self.x = x
         self.y = y
         self.health = health
@@ -24,6 +25,7 @@ class Enemy():
         if self.health <= 0:
             if self in Enemy.all_enemies: 
                 Enemy.all_enemies.remove(self)
+                self.game_data.add_cash(10)
             return True
 
     def move(self):

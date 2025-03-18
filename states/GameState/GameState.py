@@ -15,12 +15,10 @@ class GameState(State):
         super().__init__(game)
         self.game_data = GameData()
         self.guimanager = GUIManager(game)
+        self.grid_manager = GridManager(game, self.guimanager, self.game_data)
         self.pathfinding_manager = PathfindingManager(self.grid_manager)
-        self.grid_manager = GridManager(game, self.guimanager)
-        self.enemy_wave_manager = EnemyWaveManager(self.pathfinding_manager, self.grid_manager)
+        self.enemy_wave_manager = EnemyWaveManager(self.pathfinding_manager, self.grid_manager, self.game_data)
         self.game_map = Map(game, self.grid_manager)
-        self.game_data = GameData()
-        self.font = pygame.font.SysFont("Arial", 20)
         self.state = "playing"
 
     def render(self, screen):
@@ -40,6 +38,8 @@ class GameState(State):
 
         if x + 1 < GRID_SIZE:
             self.game_map.highlight_tile(screen)
+
+        self.game_data.render(screen)
 
     def update(self):
         if self.grid_manager.array != None:

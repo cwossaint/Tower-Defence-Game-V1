@@ -11,7 +11,6 @@ class Tower():
         self.sprite = None
         self.range = None
         self.dmg = 10
-        self.cost = None
         self.range = range
         self.damage = damage
         self.attack_delay = attack_delay
@@ -69,21 +68,25 @@ class Tower():
 
 
 class Cannon(Tower):
+    cost = 10
     def __init__(self, x, y, range=100, damage=10, attack_delay=10):
         super().__init__(x, y, range, damage, attack_delay)
         self.sprite = CANNONTOWERSPRITE
 
 class Dart(Tower):
+    cost = 50
     def __init__(self, x, y, range=1000, damage=10, attack_delay=1):
         super().__init__(x, y, range, damage, attack_delay)
         self.sprite = DARTTOWERSPRITE
 
 class Glue(Tower):
+    cost = 10
     def __init__(self, x, y, range=100, damage=10, attack_delay=10):
        super().__init__(x, y, range, damage, attack_delay)
        self.sprite = GLUETOWERSPRITE
 
 class Boomerang(Tower):
+    cost = 10
     def __init__(self, x, y, range=100, damage=10, attack_delay=10):
         super().__init__(x, y, range, damage, attack_delay)
         self.sprite = BOOMERANGTOWERSPRITE

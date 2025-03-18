@@ -3,7 +3,7 @@ from constants import *
 from level_data import *
 
 class GridManager():
-    def __init__(self, game, guimanager) -> None:
+    def __init__(self, game, guimanager, game_data) -> None:
         self.towers = { "dart": Dart,
                         "glue": Glue,
                         "cannon": Cannon,
@@ -13,6 +13,7 @@ class GridManager():
                        "map2": LEVEL2MAPARRAY}
         self.array = None
         self.game = game
+        self.game_data = game_data
         self.guimanager = guimanager
 
     def load_map_data(self, chosenmap):
@@ -30,6 +31,14 @@ class GridManager():
     def place_tower(self, row, col, chosentower):
         x, y = self.grid_to_screen(row, col)
         chosentower(x, y)
+        
+    def sufficient_cash(self, chosentower):
+        if not chosentower.cost > self.game_data.cash:
+             self.game_data.remove_cash(chosentower.cost)
+             self.game_data.set_message("")
+             return True
+        self.game_data.set_message("insufficient funds")
+        return False
 
     def update(self): 
         if self.guimanager.selected_tower:
@@ -39,9 +48,10 @@ class GridManager():
                 if self.is_tile_valid(row, col):
                     tower = self.towers.get(self.guimanager.selected_tower)
                     if tower:
-                        self.place_tower(row, col, tower)
-                        self.update_tower_placement(row, col, tower)
-                        self.guimanager.unselect_tower()
+                        if self.sufficient_cash(tower):
+                            self.place_tower(row, col, tower)
+                            self.update_tower_placement(row, col, tower)
+                            self.guimanager.unselect_tower()
 
                 
     def update_tower_placement(self, row, col, tower):
