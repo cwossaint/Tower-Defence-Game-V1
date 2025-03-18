@@ -50,7 +50,8 @@ class Tower():
 
     def update(self):
       
-        if not self.target or self.find_distance(self.target) > self.range or self.target.is_dead():
+        if not self.target or self.find_distance(self.target) > self.range or self.target.removed == True:
+
             self.find_target()
 
         if self.target:

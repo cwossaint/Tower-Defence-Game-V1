@@ -37,7 +37,9 @@ class Projectile():
     def move_towards_target(self):
             self.x += self.direction_x * self.speed
             self.y += self.direction_y * self.speed
-            self.rect = pygame.Rect(self.x, self.y, 20, 20)
+            
+    def update_rect(self):
+        self.rect = pygame.Rect(self.x, self.y, self.size, self.size)
 
     def update(self):
         if self.direction_x and self.direction_y:

@@ -21,13 +21,18 @@ class Enemy():
         self.current_direction = None
         self.directions_index = 0
         self.distance_travelled = 0
+        self.removed = False
 
     def is_dead(self):
         if self.health <= 0:
-            if self in Enemy.all_enemies: 
-                Enemy.all_enemies.remove(self)
-                self.game_data.add_cash(10)
-            return True
+            self.remove()
+            self.game_data.add_cash(10)
+
+        
+    def remove(self):
+        if self in Enemy.all_enemies: 
+            Enemy.all_enemies.remove(self)
+            self.removed = True
 
     def calculate_distance(self):
         if  self.distance_travelled + self.speed  > TILE_SIZE:
@@ -78,9 +83,8 @@ class Enemy():
             return True
             
     def attack_base(self):
-        if self in Enemy.all_enemies: 
-            Enemy.all_enemies.remove(self)
-            self.game_data.remove_lives(self.damage)
+        self.remove()
+        self.game_data.remove_lives(self.damage)
 
     def take_damage(self, damage):
         self.health -= damage
