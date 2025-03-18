@@ -9,7 +9,8 @@ class Projectile():
     def __init__(self, x, y, target, damage) -> None:
         self.x = x
         self.y = y
-        self.rect = pygame.Rect(self.x, self.y, 20, 20)
+        self.size = 50
+        self.rect = pygame.Rect(self.x, self.y, self.size, self.size)
         self.target = target
         self.sprite = None
         self.damage = damage
@@ -22,7 +23,7 @@ class Projectile():
         Projectile.all_projectiles.remove(self)
 
     def render(self, screen):
-        pygame.draw.circle(screen, RED, (self.x, self.y), 10)
+        pygame.draw.circle(screen, RED, (self.x, self.y), self.size/2)
         #screen.blit(self.sprite, (self.x, self.y))
 
     def calculate_direction(self):

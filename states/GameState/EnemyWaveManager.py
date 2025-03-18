@@ -26,7 +26,8 @@ class EnemyWaveManager:
     def start_new_wave(self):
         self.wave += 1
         self.enemies_to_spawn = 5 + (2 * self.wave)
-        self.spawn_delay = 60 - (5 * self.wave)
+        if self.spawn_delay > 10:
+            self.spawn_delay = 60 - (5 * self.wave)
         print("next wave")
 
     def update(self):

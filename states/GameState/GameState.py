@@ -7,20 +7,20 @@ from states.GameState.GUIManager import *
 from states.GameState.PathfinderManager import *
 from entities.enemy import *
 from states.GameState.EnemyWaveManager import *
+from states.GameState.GameData import *
 
 
 class GameState(State):
     def __init__(self, game):
         super().__init__(game)
+        self.game_data = GameData()
         self.guimanager = GUIManager(game)
-        self.grid_manager = GridManager(game, self.guimanager)
-        self.game_map = Map(game, self.grid_manager)
         self.pathfinding_manager = PathfindingManager(self.grid_manager)
+        self.grid_manager = GridManager(game, self.guimanager)
         self.enemy_wave_manager = EnemyWaveManager(self.pathfinding_manager, self.grid_manager)
-        self.path = None
-        self.font = pygame.font.SysFont("Arial", 30)
-        self.cash = 20
-        self.lives = 100
+        self.game_map = Map(game, self.grid_manager)
+        self.game_data = GameData()
+        self.font = pygame.font.SysFont("Arial", 20)
         self.state = "playing"
 
     def render(self, screen):
@@ -41,10 +41,6 @@ class GameState(State):
         if x + 1 < GRID_SIZE:
             self.game_map.highlight_tile(screen)
 
-        #text_surface = self.font.render(self.text, True, WHITE)
-        #screen.blit(text_surface, (self.rect.x + (self.rect.width - text_surface.get_width()) // 2, 
-    
-
     def update(self):
         if self.grid_manager.array != None:
             self.enemy_wave_manager.update()
@@ -63,4 +59,4 @@ class GameState(State):
             projectile.update()
             
         return "playing"
-        
+    
