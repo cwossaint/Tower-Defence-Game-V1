@@ -1,5 +1,6 @@
 from states.State import *
 from entities.Button import *
+from states.MenuButtonData import *
 
 class MenuState(State):
     def __init__(self, game, x=0, y=0):
@@ -8,10 +9,19 @@ class MenuState(State):
         self.background = None
         self.x = x
         self.y = y
-        self.create_buttons(game)
 
-    def create_buttons(game):
-        pass
+    def create_buttons(self, game):
+
+        num_buttons = len(self.button_data)
+
+        total_button_height = num_buttons * BUTTONHEIGHT + (num_buttons - 1) * BUTTONSPACING
+        start_y = self.y + (SCREEN_HEIGHT - total_button_height) // 2 
+        x_position = (SCREEN_WIDTH  - BUTTONWIDTH )// 2
+
+        for index, (text, output) in enumerate(self.button_data):
+            y_position = start_y + index * (BUTTONHEIGHT + BUTTONSPACING)
+            button = MenuButton(x_position, y_position, BUTTONWIDTH, BUTTONHEIGHT, text, output, game)
+            self.buttons.append(button)
 
     def update(self):
         for button in self.buttons:
@@ -31,63 +41,37 @@ class MainMenuState(MenuState):
     def __init__(self, game):
         super().__init__(game)
         self.state = "mainmenu"
-
-    def create_buttons(self, game):
-        QuitGameButton = MenuButton(500, 100, 200, 100, "Quit Game", "quit", game)
-        PlayGameButton = MenuButton(500, 350, 200, 100, "Play", "mapselect", game)
-        OptionsGameButton = MenuButton(500, 600, 200, 100, "Options", "options", game)
-
-        self.buttons.append(QuitGameButton)
-        self.buttons.append(PlayGameButton)
-        self.buttons.append(OptionsGameButton)
+        self.button_data = MAINMENUBUTTONDATA
+        self.create_buttons(game)
 
 class PauseState(MenuState):
     def __init__(self, game):
         super().__init__(game)
         self.state = "pause"
-
-    def create_buttons(self, game):
-        ResumeButton = MenuButton(500, 100, 200, 100, "Resume", "playing", game)
-        BackToMainMenuButton = MenuButton(500, 350, 200, 100, "Back to Main Menu", "mainmenu", game)
-
-        self.buttons.append(ResumeButton)
-        self.buttons.append(BackToMainMenuButton)
+        self.button_data = PAUSEMENUBUTTONDATA
+        self.create_buttons(game)
 
 class GameOverState(MenuState):
     def __init__(self, game):
         super().__init__(game)
         self.state = "gameover"
-
-    def create_buttons(self, game):
-        BackToMainMenuButton = MenuButton(500, 100, 200, 100, "Back to Main Menu", "mainmenu", game)
-        self.buttons.append(BackToMainMenuButton)
+        self.button_data = GAMEOVERMENUDATA
+        self.create_buttons(game)       
 
 class OptionsState(MenuState):
     def __init__(self, game):
         super().__init__(game)
         self.state = "options"
-
-    def create_buttons(self, game):
-        BackToMainMenuButton = MenuButton(500, 100, 200, 100, "Back to Main Menu", "mainmenu", game)
-        QuitGameButton = MenuButton(500, 350, 200, 100, "Quit Game", "quit", game)
-
-        self.buttons.append(QuitGameButton)
-        self.buttons.append(BackToMainMenuButton)
+        self.button_data = OPTIONSMENUDATA
+        self.create_buttons(game)     
 
 class MapSelectState(MenuState):
     def __init__(self, game, gamestate):
         super().__init__(game)
         self.gamestate = gamestate
         self.state = "mapselect"
-
-    def create_buttons(self, game):
-        Map1Button = MenuButton(500, 100, 200, 100, "Map 1", "map1", game)
-        Map2Button = MenuButton(500, 150, 200, 100, "Map 2", "map2", game)
-        BackToMainMenuButton = MenuButton(500, 500, 200, 100, "Back to Main Menu", "mainmenu", game)
-        
-        self.buttons.append(Map1Button)
-        self.buttons.append(Map2Button)
-        self.buttons.append(BackToMainMenuButton)
+        self.button_data = MAPSELECTMENUBUTTONDATA
+        self.create_buttons(game)     
 
     def update(self):
         output =  super().update()

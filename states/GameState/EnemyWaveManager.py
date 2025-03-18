@@ -22,7 +22,7 @@ class EnemyWaveManager:
     def create_enemy(self):
         row, col = self.start_point
         x, y = self.grid_manager.grid_to_screen(row, col)
-        enemy = Enemy(x, y, 30 * (0.2 * self.wave), 7, self.path, self.game_data)
+        enemy = Enemy(x, y, 10 * (0.2 * self.wave), 7, self.path, self.game_data)
 
     def start_new_wave(self):
         if self.guimanager.wave_start == True:
