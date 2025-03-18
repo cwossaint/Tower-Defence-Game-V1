@@ -29,17 +29,28 @@ class Enemy():
                 self.game_data.add_cash(10)
             return True
 
+    def calculate_distance(self):
+        if  self.distance_travelled + self.speed  > TILE_SIZE:
+            distance = TILE_SIZE - self.distance_travelled
+        else:
+            distance = self.speed
+        return distance
+
     def move(self):
+        distance = self.calculate_distance()
         if self.current_direction == "left":
-            self.x -= self.speed
+            self.x -= distance
         elif self.current_direction == "right":
-            self.x += self.speed
+            self.x += distance
         elif self.current_direction == "up":
-            self.y -= self.speed
+            self.y -= distance
         elif self.current_direction == "down":
-            self.y += self.speed
-        self.distance_travelled += self.speed
-        self.rect = pygame.Rect(self.x, self.y, self.sprite.get_width(), self.sprite.get_height())
+            self.y += distance
+        self.distance_travelled += distance
+        self.update_rect()
+
+    def update_rect(self):
+         self.rect = pygame.Rect(self.x, self.y, self.sprite.get_width(), self.sprite.get_height())
 
     def check_collision(self):
         for projectile in Projectile.all_projectiles:
