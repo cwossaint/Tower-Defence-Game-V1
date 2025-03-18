@@ -1,4 +1,5 @@
 from entities.Button import *
+from states.GameState.GameGUIButtonData import *
 
 class GUIManager:
     def __init__(self, game):
@@ -6,22 +7,20 @@ class GUIManager:
         self.selected_tower = None
         self.game = game
         self.wave_start = False
+        self.button_data = GAMEGUIPANELBUTTONDATA
         self.create_buttons()
     
     def create_buttons(self):
-        
-        glue_tower_button = TowerSelectButton(800, 50, 200, 100, "Glue", "glue", self.game)
-        boomerang_tower_button = TowerSelectButton(800, 250, 200, 100, "Boomerang", "boomerang", self.game)
-        dart_tower_button = TowerSelectButton(800, 450, 200, 100, "Dart", "dart", self.game)
-        cannon_tower_button = TowerSelectButton(800, 650, 200, 100, "Cannon", "cannon", self.game)
+        num_buttons = len(self.button_data)
 
-        start_wave_button = WaveStartButton(800, 650, 200, 100, "Start Next Wave", "start", self.game)
+        total_button_height = num_buttons * BUTTONHEIGHT + (num_buttons - 1) * BUTTONSPACING
+        start_y = 0 + (SCREEN_HEIGHT - total_button_height) // 2 
+        x_position = (SCREEN_WIDTH - GRID_SIZE  - BUTTONWIDTH ) // 2 + GRID_SIZE
 
-        self.buttons.append(glue_tower_button)
-        self.buttons.append(boomerang_tower_button)
-        self.buttons.append(dart_tower_button)
-        self.buttons.append(cannon_tower_button)
-        self.buttons.append(start_wave_button)
+        for index, (text, output, type) in enumerate(self.button_data):
+            y_position = start_y + index * (BUTTONHEIGHT + BUTTONSPACING)
+            button = type(x_position, y_position, BUTTONWIDTH, BUTTONHEIGHT, text, output, self.game)
+            self.buttons.append(button)
 
     def unselect_tower(self):
         self.selected_tower = None

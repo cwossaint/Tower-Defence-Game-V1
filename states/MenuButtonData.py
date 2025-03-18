@@ -29,3 +29,4 @@ MAPSELECTMENUBUTTONDATA = [
     ("Map 2", "map2"), 
     ("Back to Main Menu", "mainmenu")
 ]
+
