@@ -6,13 +6,14 @@ class Enemy():
 
     all_enemies = []
 
-    def __init__(self, x, y, health, speed, path, game_data):
+    def __init__(self, x, y, health, speed, directions_list, game_data):
         self.all_enemies.append(self)
         self.game_data = game_data
         self.x = x
         self.y = y
         self.health = health
-        self.path = path
+        self.directions_list = directions_list
+        self.damage = 10
         self.speed = speed
         self.sprite = pygame.image.load("images/enemy_sprites/grr.png")
         self.rect = pygame.Rect(self.x, self.y, self.sprite.get_width(), self.sprite.get_height())
@@ -53,10 +54,22 @@ class Enemy():
 
     def determine_direction(self):
         if self.distance_travelled >= TILE_SIZE:
-            if self.directions_index + 1 < len(self.path):
+            if not self.end_of_path():
                 self.directions_index += 1
                 self.distance_travelled = 0
-        self.current_direction = self.path[self.directions_index]
+        self.current_direction = self.directions_list[self.directions_index]
+
+    def end_of_path(self):
+        if self.directions_index + 1 < len(self.directions_list):
+            return False
+        else: 
+            self.attack_base()
+            return True
+            
+    def attack_base(self):
+        if self in Enemy.all_enemies: 
+            Enemy.all_enemies.remove(self)
+            self.game_data.remove_lives(self.damage)
 
     def take_damage(self, damage):
         self.health -= damage
