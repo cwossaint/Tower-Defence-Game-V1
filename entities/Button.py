@@ -1,7 +1,12 @@
 import pygame
 from constants import *
+import time
 
 class Button:
+
+    button_cooldown = 0.2
+    last_button_press = 0
+
     def __init__(self, x, y, width, height, text, output, game):
         self.rect = pygame.Rect(x, y, width, height)
         self.text = text
@@ -14,10 +19,15 @@ class Button:
         self.pressed = False
 
     def handle_event(self):
-        self.hovered = self.rect.collidepoint(self.game.mouse.x, self.game.mouse.y)
-        if self.game.mouse.is_pressed():
-            if self.hovered:
-                return self.output
+        current_time = time.time()
+        if current_time - Button.last_button_press < Button.button_cooldown:
+            pass
+        else:
+            self.hovered = self.rect.collidepoint(self.game.mouse.x, self.game.mouse.y)
+            if self.game.mouse.is_pressed():
+                if self.hovered:
+                    Button.last_button_press = current_time
+                    return self.output
 
     def render(self, screen):
 
