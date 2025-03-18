@@ -31,9 +31,11 @@ class GUIManager:
             if output:
                 if isinstance(button, TowerSelectButton):
                     self.selected_tower = output
-                else: 
-                    if isinstance(button, WaveStartButton):
-                        self.wave_start = True
+                elif isinstance(button, WaveStartButton):
+                    self.wave_start = True
+                elif isinstance(button, MenuButton):
+                    return output
+                        
             
     def render(self, screen):
         for button in self.buttons:

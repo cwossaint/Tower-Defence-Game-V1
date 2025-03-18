@@ -5,6 +5,7 @@ BUTTONWIDTH = 200
 BUTTONSPACING = 20
 
 GAMEGUIPANELBUTTONDATA = [
+        ("Pause", "pause", MenuButton),
         ("Glue", "glue", TowerSelectButton),
         ("Boomerang", "boomerang", TowerSelectButton),
         ("Dart", "dart", TowerSelectButton),

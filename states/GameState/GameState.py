@@ -47,7 +47,9 @@ class GameState(State):
 
         x, y = self.game.mouse.get_position()
         if (x + 1) > GRID_SIZE:
-            self.guimanager.update()
+            state = self.guimanager.update()
+            if state:
+                return state
         if (x + 1) < GRID_SIZE:
             self.grid_manager.update()
 
