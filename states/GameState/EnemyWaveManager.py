@@ -13,6 +13,7 @@ class EnemyWaveManager:
         self.enemies_to_spawn = 0
         self.spawn_timer = 0
         self.spawn_delay = 60
+        self.wave_rewards_granted = False
 
     def find_path(self):
         if self.path == None:
@@ -27,23 +28,33 @@ class EnemyWaveManager:
     def start_new_wave(self):
         if self.guimanager.wave_start == True:
             self.wave += 1
+            self.wave_rewards_granted = False
             self.game_data.next_wave()
-            self.game_data.add_cash(100 * (0.1 * self.wave))
             self.enemies_to_spawn = 5 + (2 * self.wave)
             if self.spawn_delay > 10:
                 self.spawn_delay = 60 - (5 * self.wave)
-            print("next wave")
             self.guimanager.wave_start = False
 
     def update(self):
-        if self.enemies_to_spawn == 0:
-                self.start_new_wave()
+        print(self.enemies_to_spawn)
+        if self.wave_cleared():
+            self.start_new_wave()
         elif self.path:
             if self.spawn_timer >= self.spawn_delay:
-                self.create_enemy()
-                self.spawn_timer = 0 
-                self.enemies_to_spawn -= 1
+                if self.enemies_to_spawn > 0:
+                    self.create_enemy()
+                    self.spawn_timer = 0 
+                    self.enemies_to_spawn -= 1
             else:
                 self.spawn_timer += 1
         else:
             self.find_path()
+    
+    def wave_cleared(self):
+        if self.enemies_to_spawn <= 0 and len(Enemy.all_enemies) == 0:
+            if self.wave_rewards_granted == False and self.wave > 0:
+                self.wave_rewards_granted = True
+                self.game_data.add_cash(100 * (0.1 * self.wave))
+                self.game_data.set_message("Wave Cleared")
+            return True
+        return False

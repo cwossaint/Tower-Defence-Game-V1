@@ -53,6 +53,8 @@ class GameState(State):
         if (x + 1) < GRID_SIZE:
             self.grid_manager.update()
 
+        self.game_data.update()
+
         for enemy in Enemy.all_enemies:
             enemy.update()
         for tower in Tower.all_towers:

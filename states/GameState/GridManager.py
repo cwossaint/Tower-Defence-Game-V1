@@ -35,7 +35,6 @@ class GridManager():
     def sufficient_cash(self, chosentower):
         if not chosentower.cost > self.game_data.cash:
              self.game_data.remove_cash(chosentower.cost)
-             self.game_data.set_message("")
              return True
         self.game_data.set_message("insufficient funds")
         return False
