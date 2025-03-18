@@ -13,7 +13,7 @@ class Button:
         self.hovered = False
         self.pressed = False
 
-    def handle_event(self,):
+    def handle_event(self):
         self.hovered = self.rect.collidepoint(self.game.mouse.x, self.game.mouse.y)
         if self.game.mouse.is_pressed():
             if self.hovered:
@@ -56,4 +56,12 @@ class MenuButton(Button):
     def __init__(self, x, y, width, height, text, action, game):
         super().__init__(x, y, width, height, text, action, game)
         self.all_menu_buttons.append(self)
+    
+class WaveStartButton(Button):
+
+    wave_start_buttons = []
+
+    def __init__(self, x, y, width, height, text, action, game):
+        super().__init__(x, y, width, height, text, action, game)
+        self.wave_start_buttons.append(self)
     

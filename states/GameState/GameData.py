@@ -5,7 +5,7 @@ class GameData():
         self.font = pygame.font.SysFont("Arial", 20)
         self.cash = 20
         self.lives = 100
-        self.wave = 1
+        self.wave = 0
         self.game_message = ""
 
     def add_cash(self, amount):

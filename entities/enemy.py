@@ -23,7 +23,7 @@ class Enemy():
         self.distance_travelled = 0
         self.removed = False
 
-    def is_dead(self):
+    def check_is_dead(self):
         if self.health <= 0:
             self.remove()
             self.game_data.add_cash(10)
@@ -67,6 +67,7 @@ class Enemy():
         self.determine_direction()
         self.move()
         self.check_collision()
+        self.check_is_dead()
 
     def determine_direction(self):
         if self.distance_travelled >= TILE_SIZE:
