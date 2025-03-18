@@ -57,6 +57,9 @@ class GameState(State):
             tower.update()
         for projectile in Projectile.all_projectiles:
             projectile.update()
+
+        if self.game_data.game_over():
+            return "gameover"
             
         return "playing"
     

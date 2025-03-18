@@ -28,6 +28,9 @@ class GameData():
         self.lives = 100
         self.cash = 20
 
+    def game_over(self):
+        return self.lives <= 0
+
     def render(self, screen):
         cash_text = self.font.render("Money: $" + str(self.cash), True, WHITE)
         screen.blit(cash_text, (0, 20))
