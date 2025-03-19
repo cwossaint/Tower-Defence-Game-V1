@@ -16,7 +16,7 @@ class Projectile():
         self.damage = damage
         self.direction_x = None
         self.direction_y = None
-        self.speed = 50
+        self.speed = 20
         self.all_projectiles.append(self)
 
     def destroy(self):
@@ -37,12 +37,13 @@ class Projectile():
     def move_towards_target(self):
             self.x += self.direction_x * self.speed
             self.y += self.direction_y * self.speed
+            self.update_rect()
             
     def update_rect(self):
         self.rect = pygame.Rect(self.x, self.y, self.size, self.size)
 
     def update(self):
-        if self.direction_x and self.direction_y:
+        if self.direction_x or self.direction_y:
             self.move_towards_target()
             if self.past_grid():
                 self.destroy()

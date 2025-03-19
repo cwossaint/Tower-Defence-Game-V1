@@ -17,7 +17,6 @@ class PathfindingManager():
         while path:
             next_driection = self.locate_next_point(current_direction)
             if next_driection:
-                print(next_driection)
                 self.directions.append(next_driection)
                 current_direction = next_driection
             else: 
@@ -38,7 +37,6 @@ class PathfindingManager():
                 return (row_index, col_index)  
 
     def locate_next_point(self, current_direction):
-        print(self.current_point)
         row, col = self.current_point
 
         # Check right
@@ -66,3 +64,8 @@ class PathfindingManager():
                 return "up"
 
         return None
+
+    def reset(self):
+        self.map_array = None
+        self.directions = []
+        self.current_point = None

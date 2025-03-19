@@ -1,6 +1,7 @@
 from entities.tower import *
 from constants import *
 from level_data import *
+import copy
 
 class GridManager():
     def __init__(self, game, guimanager, game_data) -> None:
@@ -17,7 +18,7 @@ class GridManager():
         self.guimanager = guimanager
 
     def load_map_data(self, chosenmap):
-        self.array = self.arraysdict.get(chosenmap)
+        self.array = copy.deepcopy(self.arraysdict.get(chosenmap))
 
     def is_tile_valid(self, row, col):
         return self.array[row][col] == 0
@@ -75,3 +76,5 @@ class GridManager():
     def get_array(self):
         return self.array
         
+    def reset(self):
+        self.array = None

@@ -41,6 +41,16 @@ class GameState(State):
 
         self.game_data.render(screen)
 
+    def reset(self):
+        self.guimanager.reset()
+        self.grid_manager.reset()
+        self.game_data.reset()
+        self.enemy_wave_manager.reset()
+        self.pathfinding_manager.reset()
+        Tower.all_towers = []
+        Projectile.all_projectiles = []
+        Enemy.all_enemies = []
+
     def update(self):
         if self.grid_manager.array != None:
             self.enemy_wave_manager.update()

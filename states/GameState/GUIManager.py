@@ -40,3 +40,7 @@ class GUIManager:
     def render(self, screen):
         for button in self.buttons:
             button.render(screen)
+
+    def reset(self):
+        self.selected_tower = None
+        self.wave_start = False

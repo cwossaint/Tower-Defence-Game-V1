@@ -23,7 +23,7 @@ class EnemyWaveManager:
     def create_enemy(self):
         row, col = self.start_point
         x, y = self.grid_manager.grid_to_screen(row, col)
-        enemy = Enemy(x, y, 10 * (0.2 * self.wave), 7, self.path, self.game_data)
+        enemy = Enemy(x, y, (3 + (100 * 0.2 * self.wave)) // 1, (7 + self.wave // 2), self.path, self.game_data)
 
     def start_new_wave(self):
         if self.guimanager.wave_start == True:
@@ -36,7 +36,6 @@ class EnemyWaveManager:
             self.guimanager.wave_start = False
 
     def update(self):
-        print(self.enemies_to_spawn)
         if self.wave_cleared():
             self.start_new_wave()
         elif self.path:
@@ -58,3 +57,10 @@ class EnemyWaveManager:
                 self.game_data.set_message("Wave Cleared")
             return True
         return False
+    
+    def reset(self):
+        self.wave = 0
+        self.enemies_to_spawn = 0
+        self.wave_rewards_granted = False
+        self.path = None
+        self.start_point = None

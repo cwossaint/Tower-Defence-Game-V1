@@ -29,6 +29,8 @@ class StateManager():
 
     def update_state(self):
         if self.next_state != self.current_state:
+            if self.next_state == "mainmenu":
+                self.states["playing"].reset()
             self.current_state = self.next_state
             self.current_state_instance = self.states.get(self.current_state)
 

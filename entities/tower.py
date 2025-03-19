@@ -76,7 +76,7 @@ class Cannon(Tower):
 
 class Dart(Tower):
     cost = 50
-    def __init__(self, x, y, range=1000, damage=10, attack_delay=1):
+    def __init__(self, x, y, range=1000, damage=10, attack_delay=0):
         super().__init__(x, y, range, damage, attack_delay)
         self.sprite = DARTTOWERSPRITE
 

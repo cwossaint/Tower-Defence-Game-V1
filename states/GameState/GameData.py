@@ -5,7 +5,7 @@ class GameData():
     def __init__(self) -> None:
         self.font = pygame.font.SysFont("Arial", 20)
         self.message_font = pygame.font.SysFont("Arial", 50)
-        self.cash = 20
+        self.cash = 50
         self.lives = 100
         self.wave = 0
         self.game_message = ""
@@ -51,3 +51,8 @@ class GameData():
         screen.blit(wave_text, (700, 0))
         game_message = self.message_font.render(self.game_message, True, RED)
         screen.blit(game_message, (350, 350))
+
+    def reset(self):
+        self.lives = 100
+        self.cash = 50
+        self.wave = 0

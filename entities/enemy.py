@@ -21,12 +21,13 @@ class Enemy():
         self.current_direction = None
         self.directions_index = 0
         self.distance_travelled = 0
+        self.value = self.health
         self.removed = False
 
     def check_is_dead(self):
         if self.health <= 0:
             self.remove()
-            self.game_data.add_cash(10)
+            self.game_data.add_cash(self.value)
 
         
     def remove(self):
