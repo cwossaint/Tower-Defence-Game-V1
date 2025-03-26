@@ -52,6 +52,7 @@ class GameState(State):
         Enemy.all_enemies = []
 
     def update(self):
+
         if self.grid_manager.array != None:
             self.enemy_wave_manager.update()
 

@@ -7,10 +7,9 @@ class Tower():
 
     all_towers = []
 
-    def __init__(self, x, y, range=100, damage=10, attack_delay=10):
+    def __init__(self, x, y, range=100, damage=1, attack_delay=10):
         self.sprite = None
-        self.range = None
-        self.dmg = 10
+        self.projectile_type = None
         self.range = range
         self.damage = damage
         self.attack_delay = attack_delay
@@ -45,7 +44,7 @@ class Tower():
         
         if self.target and self.attack_timer >= self.attack_delay:
             self.target_coords = (self.target.x + (self.target.rect.width / 2), self.target.y + (self.target.rect.height / 2))
-            projectile = Projectile(self.x + (self.sprite.get_width() / 2), self.y + (self.sprite.get_height()  / 2), self.target_coords, self.dmg)
+            projectile = Projectile(self.x + (self.sprite.get_width() / 2), self.y + (self.sprite.get_height()  / 2), self.target_coords, self.damage, self.projectile_type)
             self.attack_timer = 0
 
     def update(self):
@@ -70,24 +69,28 @@ class Tower():
 
 class Cannon(Tower):
     cost = 10
-    def __init__(self, x, y, range=100, damage=10, attack_delay=10):
+    def __init__(self, x, y, range=100, damage=1, attack_delay=10):
         super().__init__(x, y, range, damage, attack_delay)
         self.sprite = CANNONTOWERSPRITE
+        self.projectile_type = "CannonBall"
 
 class Dart(Tower):
     cost = 50
-    def __init__(self, x, y, range=1000, damage=10, attack_delay=0):
+    def __init__(self, x, y, range=1000, damage=20, attack_delay=-5):
         super().__init__(x, y, range, damage, attack_delay)
         self.sprite = DARTTOWERSPRITE
+        self.projectile_type = "Dart"
 
 class Glue(Tower):
     cost = 10
-    def __init__(self, x, y, range=100, damage=10, attack_delay=10):
+    def __init__(self, x, y, range=100, damage=1, attack_delay=10):
        super().__init__(x, y, range, damage, attack_delay)
        self.sprite = GLUETOWERSPRITE
+       self.projectile_type = "Glue"
 
 class Boomerang(Tower):
     cost = 10
-    def __init__(self, x, y, range=100, damage=10, attack_delay=10):
+    def __init__(self, x, y, range=100, damage=1, attack_delay=10):
         super().__init__(x, y, range, damage, attack_delay)
         self.sprite = BOOMERANGTOWERSPRITE
+        self.projectile_type = "Boomerang"

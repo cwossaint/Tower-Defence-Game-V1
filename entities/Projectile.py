@@ -1,29 +1,47 @@
 import math
 import pygame
 from constants import *
+from entities.projectile_data import *
 
 class Projectile():
 
     all_projectiles = []
 
-    def __init__(self, x, y, target, damage) -> None:
+    def __init__(self, x, y, target, damage, type) -> None:
         self.x = x
         self.y = y
-        self.size = 50
-        self.rect = pygame.Rect(self.x, self.y, self.size, self.size)
-        self.target = target
+        self.type = type
+        self.size = None
+        self.rect = None
         self.sprite = None
+        self.shape = None
+        self.speed = None
+        self.color = None
+        self.target = target
         self.damage = damage
         self.direction_x = None
         self.direction_y = None
-        self.speed = 20
+        self.set_attrbiutes()
         self.all_projectiles.append(self)
+
+
+
+    def set_attrbiutes(self):
+        projectile_type_data = PROJECTILE_DATA.get(self.type)
+        self.size = projectile_type_data.get("size")
+        self.speed = projectile_type_data.get("speed")
+        self.shape = projectile_type_data.get("shape")
+        self.color = projectile_type_data.get("color")
+        self.sprite = projectile_type_data.get("sprite")
+        self.rect = pygame.Rect(self.x, self.y, self.size, self.size)
+
 
     def destroy(self):
         Projectile.all_projectiles.remove(self)
 
     def render(self, screen):
-        pygame.draw.circle(screen, RED, (self.x, self.y), self.size/2)
+        if self.shape == "circle":
+            pygame.draw.circle(screen, self.color, (self.x, self.y), self.size/2)
         #screen.blit(self.sprite, (self.x, self.y))
 
     def calculate_direction(self):

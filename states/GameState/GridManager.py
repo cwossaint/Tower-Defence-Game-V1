@@ -32,7 +32,7 @@ class GridManager():
     def place_tower(self, row, col, chosentower):
         x, y = self.grid_to_screen(row, col)
         chosentower(x, y)
-        
+
     def sufficient_cash(self, chosentower):
         if not chosentower.cost > self.game_data.cash:
              self.game_data.remove_cash(chosentower.cost)
