@@ -16,6 +16,7 @@ class GridManager():
         self.game = game
         self.game_data = game_data
         self.guimanager = guimanager
+        self.selected_placed_tower = None
 
     def load_map_data(self, chosenmap):
         self.array = copy.deepcopy(self.arraysdict.get(chosenmap))
@@ -25,9 +26,6 @@ class GridManager():
     
     def get_tile_value(self, row, col):
         return self.array[row][col]
-
-    def update(self):
-        pass
     
     def place_tower(self, row, col, chosentower):
         x, y = self.grid_to_screen(row, col)
@@ -41,10 +39,11 @@ class GridManager():
         return False
 
     def update(self): 
-        if self.guimanager.selected_tower:
-            if self.game.mouse.is_pressed():
-                x, y = self.game.mouse.get_position()
-                row, col = self.screen_to_grid(x, y)
+        if self.game.mouse.is_pressed():
+            x, y = self.game.mouse.get_position()
+            row, col = self.screen_to_grid(x, y)
+
+            if self.guimanager.selected_tower:
                 if self.is_tile_valid(row, col):
                     tower = self.towers.get(self.guimanager.selected_tower)
                     if tower:
@@ -52,7 +51,21 @@ class GridManager():
                             self.place_tower(row, col, tower)
                             self.update_tower_placement(row, col, tower)
                             self.guimanager.unselect_tower()
+            else: 
+                tile_value = self.get_tile_value(row, col)
+                if not isinstance(tile_value, int):
+                    if not self.selected_placed_tower:
+                        self.select_tower(row, col)
+                if self.selected_placed_tower != tile_value:
+                    self.unselect_tower()
 
+    def unselect_tower(self):
+        self.selected_placed_tower = None
+
+    def select_tower(self, row, col):
+        self.selected_placed_tower = self.get_tile_value(row, col)
+
+        print(self.selected_placed_tower)
                 
     def update_tower_placement(self, row, col, tower):
         self.array[row][col] = tower
