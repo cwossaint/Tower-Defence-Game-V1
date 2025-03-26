@@ -8,6 +8,7 @@ from states.GameState.PathfinderManager import *
 from entities.enemy import *
 from states.GameState.EnemyWaveManager import *
 from states.GameState.GameData import *
+from states.GameState.TowerEditGUIManager import *
 
 
 class GameState(State):
@@ -16,6 +17,7 @@ class GameState(State):
         self.game_data = GameData()
         self.guimanager = GUIManager(game)
         self.grid_manager = GridManager(game, self.guimanager, self.game_data)
+        self.tower_edit_guimanager = TowerEditGUIManager(game, self.grid_manager)
         self.pathfinding_manager = PathfindingManager(self.grid_manager)
         self.enemy_wave_manager = EnemyWaveManager(self.pathfinding_manager, self.grid_manager, self.game_data, self.guimanager)
         self.game_map = Map(game, self.grid_manager)
