@@ -6,8 +6,11 @@ class TowerEditGUIManager():
     def __init__(self, game, grid_manager):
         self.game = game
         self.grid_manager = grid_manager
-        self.text = ""
+        self.tower_stats_text = []
+        self.upgrade_stats_text = []
+        self.text_spacing = 40
         self.button_data = TOWEREDITGUIBUTTONDATA
+        self.font = pygame.font.SysFont("Arial", 30)
         self.buttons = []
         self.create_buttons()
 
@@ -26,10 +29,34 @@ class TowerEditGUIManager():
     def render(self, screen):
         for button in self.buttons:
             button.render(screen)
+        current_y = 0
+        for item in self.tower_stats_text:
+            current_y += self.text_spacing
+            text = self.font.render((item), True, WHITE)
+            screen.blit(text, (780, current_y))
+        current_y = 475
+        for item in self.upgrade_stats_text:
+            current_y += self.text_spacing
+            text = self.font.render((item), True, WHITE)
+            screen.blit(text, (780, current_y))
 
     def update(self):
+            
             if self.grid_manager.selected_placed_tower:
-                self.text = ""
+                tower = self.grid_manager.selected_placed_tower
+                self.upgrade_stats_text = []
+                self.tower_stats_text = []
+                self.tower_stats_text.append(str(tower.name))
+                self.tower_stats_text.append("Level: " + str(tower.level))
+                self.tower_stats_text.append("Damage: " + str(tower.damage))
+                self.tower_stats_text.append("Attack Delay: " + str(tower.attack_delay))
+                self.tower_stats_text.append("Range: " + str(tower.range))
+
+                self.upgrade_stats_text.append("Upgrade Cost: " + str(tower.level))
+                self.upgrade_stats_text.append("Level: " + str(tower.level))
+                self.upgrade_stats_text.append("Damage: " + str(tower.damage))
+                self.upgrade_stats_text.append("Attack Delay: " + str(tower.attack_delay))
+                self.upgrade_stats_text.append("Range: " + str(tower.range))
 
             for button in self.buttons:
                 output = button.handle_event()

@@ -68,11 +68,12 @@ class GameState(State):
                 state = self.guimanager.update()
                 if state:
                     return state
-            elif self.grid_manager.selected_placed_tower:
-                self.tower_edit_guimanager.update()
 
         if (x + 1) < GRID_SIZE:
             self.grid_manager.update()
+
+        if self.grid_manager.selected_placed_tower:
+                self.tower_edit_guimanager.update()
 
         self.game_data.update()
 

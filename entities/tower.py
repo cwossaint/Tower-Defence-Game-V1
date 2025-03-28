@@ -13,12 +13,12 @@ class Tower():
         self.range = range
         self.damage = damage
         self.attack_delay = attack_delay
-        self.attack_delay = attack_delay
         self.attack_timer = 0
         self.x = x
         self.y = y
         self.target_coords = None
         self.target = None
+        self.level = 1
         self.all_towers.append(self)
 
     def find_target(self):
@@ -77,6 +77,7 @@ class Cannon(Tower):
         super().__init__(x, y, range, damage, attack_delay)
         self.sprite = CANNONTOWERSPRITE
         self.projectile_type = "CannonBall"
+        self.name = 'Cannon Tower'
 
 class Dart(Tower):
     cost = 50
@@ -84,6 +85,7 @@ class Dart(Tower):
         super().__init__(x, y, range, damage, attack_delay)
         self.sprite = DARTTOWERSPRITE
         self.projectile_type = "Dart"
+        self.name = 'Dart Tower'
 
 class Glue(Tower):
     cost = 10
@@ -91,6 +93,7 @@ class Glue(Tower):
        super().__init__(x, y, range, damage, attack_delay)
        self.sprite = GLUETOWERSPRITE
        self.projectile_type = "Glue"
+       self.name = 'Glue Tower'
 
 class Boomerang(Tower):
     cost = 10
@@ -98,3 +101,4 @@ class Boomerang(Tower):
         super().__init__(x, y, range, damage, attack_delay)
         self.sprite = BOOMERANGTOWERSPRITE
         self.projectile_type = "Boomerang"
+        self.name = 'Boomerang Tower'
