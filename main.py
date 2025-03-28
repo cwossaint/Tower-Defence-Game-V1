@@ -2,8 +2,8 @@ import pygame
 from constants import *
 from game import *
 
-def main():
-#if __name__ == "__main__":
+#def main():
+if __name__ == "__main__":
     pygame.init()
     pygame.mixer.init()
     pygame.display.init()
@@ -12,6 +12,6 @@ def main():
     game = Game()
     game.run(screen)
 
-import cProfile
+#import cProfile
 
-cProfile.run("main()", sort="cumtime")
+#cProfile.run("main()", sort="cumtime")

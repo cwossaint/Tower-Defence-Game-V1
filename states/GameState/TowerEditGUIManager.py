@@ -6,7 +6,7 @@ class TowerEditGUIManager():
     def __init__(self, game, grid_manager):
         self.game = game
         self.grid_manager = grid_manager
-        self.text = None
+        self.text = ""
         self.button_data = TOWEREDITGUIBUTTONDATA
         self.buttons = []
         self.create_buttons()
@@ -28,11 +28,17 @@ class TowerEditGUIManager():
             button.render(screen)
 
     def update(self):
+            if self.grid_manager.selected_placed_tower:
+                self.text = ""
+
             for button in self.buttons:
                 output = button.handle_event()
                 if output:
                     if output == "remove":
                        self.grid_manager.selected_placed_tower.remove_tower()
+                       x, y = self.grid_manager.selected_placed_tower.x, self.grid_manager.selected_placed_tower.y
+                       row, col = self.grid_manager.screen_to_grid(x, y)
+                       self.grid_manager.set_tile_value(row, col, 0)
                     elif output == "upgrade":
                         print("upgrade" + str(self.grid_manager.selected_placed_tower))
 

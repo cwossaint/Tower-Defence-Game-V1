@@ -30,7 +30,7 @@ class GridManager():
     def place_tower(self, row, col, chosentower):
         x, y = self.grid_to_screen(row, col)
         tower_obj = chosentower(x, y)
-        self.update_tower_placement(row, col, tower_obj)
+        self.set_tile_value(row, col, tower_obj)
 
     def sufficient_cash(self, chosentower):
         if not chosentower.cost > self.game_data.cash:
@@ -64,11 +64,9 @@ class GridManager():
 
     def select_tower(self, row, col):
         self.selected_placed_tower = self.get_tile_value(row, col)
-
-        print(self.selected_placed_tower)
                 
-    def update_tower_placement(self, row, col, tower):
-        self.array[row][col] = tower
+    def set_tile_value(self, row, col, value):
+        self.array[row][col] = value
 
     def screen_to_grid(self, x, y):
         row = y//TILE_SIZE
