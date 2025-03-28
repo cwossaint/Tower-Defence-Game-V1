@@ -53,7 +53,7 @@ class TowerEditGUIManager():
                 self.tower_stats_text.append("Range: " + str(tower.range))
 
 
-                if tower.level + 1 < len(tower.upgrade_stats):
+                if not tower.level + 1 > len(tower.upgrade_stats):
                     upgrade_stats = tower.upgrade_stats.get(tower.level + 1)
                     upgrade_damage = upgrade_stats.get("damage")
                     upgrade_range = upgrade_stats.get("range")
@@ -70,11 +70,13 @@ class TowerEditGUIManager():
             for button in self.buttons:
                 output = button.handle_event()
                 if output:
+                    tower = self.grid_manager.selected_placed_tower
                     if output == "remove":
-                       self.grid_manager.selected_placed_tower.remove_tower()
-                       x, y = self.grid_manager.selected_placed_tower.x, self.grid_manager.selected_placed_tower.y
+                       tower.remove_tower()
+                       x, y = tower.x, tower.y
                        row, col = self.grid_manager.screen_to_grid(x, y)
                        self.grid_manager.set_tile_value(row, col, 0)
                     elif output == "upgrade":
-                        print("upgrade" + str(self.grid_manager.selected_placed_tower))
+                        tower.upgrade()
+                        
 

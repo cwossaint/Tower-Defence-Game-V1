@@ -2,7 +2,7 @@ from constants import *
 
 PROJECTILE_DATA =  { "Dart": {
                     "size": 10,
-                    "speed": 10,
+                    "speed": 15,
                     "sprite": None,  
                     "shape": "circle",
                     "color": RED
@@ -10,7 +10,7 @@ PROJECTILE_DATA =  { "Dart": {
 
                     "Boomerang": {
                     "size": 20,
-                    "speed": 7,
+                    "speed": 15,
                     "sprite": None,  
                     "shape": "circle",
                     "color": BLUE
@@ -18,15 +18,15 @@ PROJECTILE_DATA =  { "Dart": {
 
                     "CannonBall": {
                     "size": 50,
-                    "speed": 5,
+                    "speed": 10,
                     "sprite": None,  
                     "shape": "circle",
                     "color": BLACK
                         },
                     
                     "Glue": {
-                    "size": 20,
-                    "speed": 7,
+                    "size": 35,
+                    "speed": 10,
                     "sprite": None,  
                     "shape": "circle",
                     "color": DARK_YELLOW
