@@ -9,7 +9,7 @@ PROJECTILE_DATA =  { "Dart": {
                         },
 
                     "Boomerang": {
-                    "size": 15,
+                    "size": 20,
                     "speed": 7,
                     "sprite": None,  
                     "shape": "circle",
@@ -17,7 +17,7 @@ PROJECTILE_DATA =  { "Dart": {
                         },
 
                     "CannonBall": {
-                    "size": 20,
+                    "size": 50,
                     "speed": 5,
                     "sprite": None,  
                     "shape": "circle",

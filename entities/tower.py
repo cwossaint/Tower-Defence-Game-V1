@@ -40,6 +40,10 @@ class Tower():
         distance = math.sqrt((enemy.x - self.x) ** 2 + (enemy.y - self.y) ** 2)
         return distance
 
+    def remove_tower(self):
+        if self in Tower.all_towers:
+            Tower.all_towers.remove(self)
+
     def fire_projectile(self):
         
         if self.target and self.attack_timer >= self.attack_delay:

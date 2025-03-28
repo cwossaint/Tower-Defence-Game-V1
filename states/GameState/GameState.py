@@ -25,8 +25,12 @@ class GameState(State):
 
     def render(self, screen):
         self.game_map.draw_map_obstacles(screen)
-        self.guimanager.render(screen)
         self.game_map.render(screen)
+        if not self.grid_manager.selected_placed_tower:
+            self.guimanager.render(screen)
+        elif self.grid_manager.selected_placed_tower:
+            self.tower_edit_guimanager.render(screen)
+
         x, y = self.game.mouse.get_position()
 
         for tower in Tower.all_towers:
@@ -60,9 +64,13 @@ class GameState(State):
 
         x, y = self.game.mouse.get_position()
         if (x + 1) > GRID_SIZE:
-            state = self.guimanager.update()
-            if state:
-                return state
+            if not self.grid_manager.selected_placed_tower:
+                state = self.guimanager.update()
+                if state:
+                    return state
+            elif self.grid_manager.selected_placed_tower:
+                self.tower_edit_guimanager.update()
+
         if (x + 1) < GRID_SIZE:
             self.grid_manager.update()
 

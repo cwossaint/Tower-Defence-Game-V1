@@ -12,3 +12,9 @@ GAMEGUIPANELBUTTONDATA = [
         ("Cannon", "cannon", TowerSelectButton),
         ("Start Next Wave", "start", WaveStartButton),
         ] 
+
+TOWEREDITGUIBUTTONDATA = [
+        ("Remove Tower", "remove", MenuButton),
+        ("Upgrade Tower", "upgrade", MenuButton)
+        ] 
+
