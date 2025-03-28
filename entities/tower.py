@@ -19,6 +19,7 @@ class Tower():
         self.target_coords = None
         self.target = None
         self.level = 1
+        self.upgrade_stats = {}
         self.all_towers.append(self)
 
     def find_target(self):
@@ -67,8 +68,13 @@ class Tower():
     def render(self, screen):
         screen.blit(self.sprite, (self.x, self.y))
 
-    def upgrade():
-        pass
+    def upgrade(self):
+        self.level += 1
+        upgrade_stats = self.upgrade_stats.get(self.level)
+        self.damage = upgrade_stats.get("damage")
+        self.range = upgrade_stats.get("range")
+        self.attack_delay = upgrade_stats.get("attack_delay")
+
 
 
 class Cannon(Tower):
@@ -78,6 +84,22 @@ class Cannon(Tower):
         self.sprite = CANNONTOWERSPRITE
         self.projectile_type = "CannonBall"
         self.name = 'Cannon Tower'
+        self.upgrade_stats = { 1 : { "damage" : 10,
+                                    "range" : 100,
+                                    "attack delay" : 10
+                                },
+
+                                2 : { "damage" : 12,
+                                    "range" : 125,
+                                    "attack delay" : 8
+                                },
+
+                                3 : { "damage" : 100,
+                                    "range" : 175,
+                                    "attack delay" : 1
+                                },
+                                
+                                }
 
 class Dart(Tower):
     cost = 50

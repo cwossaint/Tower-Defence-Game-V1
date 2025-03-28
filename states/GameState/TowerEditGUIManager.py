@@ -52,11 +52,20 @@ class TowerEditGUIManager():
                 self.tower_stats_text.append("Attack Delay: " + str(tower.attack_delay))
                 self.tower_stats_text.append("Range: " + str(tower.range))
 
-                self.upgrade_stats_text.append("Upgrade Cost: " + str(tower.level))
-                self.upgrade_stats_text.append("Level: " + str(tower.level))
-                self.upgrade_stats_text.append("Damage: " + str(tower.damage))
-                self.upgrade_stats_text.append("Attack Delay: " + str(tower.attack_delay))
-                self.upgrade_stats_text.append("Range: " + str(tower.range))
+
+                if tower.level + 1 < len(tower.upgrade_stats):
+                    upgrade_stats = tower.upgrade_stats.get(tower.level + 1)
+                    upgrade_damage = upgrade_stats.get("damage")
+                    upgrade_range = upgrade_stats.get("range")
+                    upgrade_attack_delay = upgrade_stats.get("attack delay")
+
+                    self.upgrade_stats_text.append("Upgrade Cost: " + str(0))
+                    self.upgrade_stats_text.append("Level: " + str(tower.level) + "->" + str(tower.level + 1))
+                    self.upgrade_stats_text.append("Damage: " + str(tower.damage) + "->" + str(upgrade_damage))
+                    self.upgrade_stats_text.append("Attack Delay: " + str(tower.attack_delay) + "->" + str(upgrade_attack_delay))
+                    self.upgrade_stats_text.append("Range: " + str(tower.range)  + "->" + str(upgrade_range))
+                else: 
+                    self.upgrade_stats_text.append("Max Level")
 
             for button in self.buttons:
                 output = button.handle_event()
