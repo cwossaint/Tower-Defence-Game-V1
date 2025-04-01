@@ -1,8 +1,8 @@
 
 
-BUTTONHEIGHT = 200
-BUTTONWIDTH = 400
-BUTTONSPACING = 50
+BUTTONHEIGHT = 125
+BUTTONWIDTH = 250
+BUTTONSPACING = 20
 
 MAINMENUBUTTONDATA = [
             ("Play", "mapselect"),
@@ -27,6 +27,7 @@ OPTIONSMENUDATA = [
 MAPSELECTMENUBUTTONDATA = [
     ("Map 1", "map1"),
     ("Map 2", "map2"), 
+    ("Map 3", "map3"),
     ("Back to Main Menu", "mainmenu")
 ]
 

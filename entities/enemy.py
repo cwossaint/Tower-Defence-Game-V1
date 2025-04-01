@@ -1,27 +1,23 @@
 import pygame
-from constants import *
+from entities.enemy_sprites import *
 from entities.Projectile import *
 
 class Enemy():
 
     all_enemies = []
 
-    def __init__(self, x, y, health, speed, directions_list, game_data):
-        self.all_enemies.append(self)
-        self.game_data = game_data
+    def __init__(self, x, y, directions_list, game_data, health, damage, speed):
         self.x = x
         self.y = y
         self.health = health
-        self.directions_list = directions_list
-        self.damage = 10
+        self.damage = damage
         self.speed = speed
-        self.sprite = pygame.image.load("images/enemy_sprites/grr.png")
-        self.rect = pygame.Rect(self.x, self.y, self.sprite.get_width(), self.sprite.get_height())
-        self.sprite = pygame.transform.scale(self.sprite, (TILE_SIZE, TILE_SIZE))
+        self.all_enemies.append(self)
+        self.game_data = game_data
+        self.directions_list = directions_list
         self.current_direction = None
         self.directions_index = 0
         self.distance_travelled = 0
-        self.value = self.health
         self.removed = False
 
     def check_is_dead(self):
@@ -29,7 +25,6 @@ class Enemy():
             self.remove()
             self.game_data.add_cash(self.value)
 
-        
     def remove(self):
         if self in Enemy.all_enemies: 
             Enemy.all_enemies.remove(self)
@@ -94,14 +89,33 @@ class Enemy():
     def render(self, screen):
         screen.blit(self.sprite, (self.x, self.y))
 
-class EnemyVariant1(Enemy):
-    def __init__(self, x, y, health, damage, speed):
-        super().__init__()
-        self.x = x
-        self.y = y
-        self.health = health
-        self.damage = damage
-        self.speed = speed
 
+class Tanky(Enemy):
+    def __init__(self, x, y, directions_list, game_data, health=50, damage=20, speed=3, ):
+        super().__init__(x, y, directions_list, game_data, health, damage, speed)
+        self.sprite = TANKYENEMYSPRITE
+        self.rect = pygame.Rect(self.x, self.y, self.sprite.get_width(), self.sprite.get_height())
+        self.value = 10
+
+class Speedy(Enemy):
+    def __init__(self, x, y, directions_list, game_data, health=10, damage=5, speed=15):
+        super().__init__(x, y, directions_list, game_data, health, damage, speed)
+        self.sprite = SPEEDYENEMYSPRITE
+        self.rect = pygame.Rect(self.x, self.y, self.sprite.get_width(), self.sprite.get_height())
+        self.value = 5
+
+class Base(Enemy):
+    def __init__(self, x, y, directions_list, game_data, health=30, damage=10, speed=7):
+        super().__init__(x, y, directions_list, game_data, health, damage, speed)
+        self.sprite = BASEENEMYSPRITE
+        self.rect = pygame.Rect(self.x, self.y, self.sprite.get_width(), self.sprite.get_height())
+        self.value = 2
+
+class Boss(Enemy):
+    def __init__(self, x, y, directions_list, game_data, health=1500, damage=100, speed=1):
+        super().__init__(x, y, directions_list, game_data, health, damage, speed)
+        self.sprite = BOSSENEMYSPRITE
+        self.rect = pygame.Rect(self.x, self.y, self.sprite.get_width(), self.sprite.get_height())
+        self.value = 100
 
         

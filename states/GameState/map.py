@@ -25,14 +25,12 @@ class Map():
                 grid_value = self.grid_manager.get_tile_value(row, col)
                 if grid_value == 1 or grid_value == 4:
                     colour = LIGHT_BROWN
-                elif grid_value == 0:
-                    colour = DARK_BROWN
                 elif grid_value == 3:
                     colour = GRAY
                 elif grid_value == 2:
                     colour = DARK_GREEN
-                else:
-                    colour = None
+                else: # 0 and towers
+                    colour = DARK_BROWN
                 if colour:
                     x, y = self.grid_manager.grid_to_screen(row, col)
                     pygame.draw.rect(screen, colour, (x, y, TILE_SIZE, TILE_SIZE))

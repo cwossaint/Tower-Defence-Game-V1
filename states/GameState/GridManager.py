@@ -11,7 +11,9 @@ class GridManager():
                         "boomerang": Boomerang }
         
         self.arraysdict = {"map1" : LEVEL1MAPARRAY, 
-                       "map2": LEVEL2MAPARRAY}
+                       "map2": LEVEL2MAPARRAY, 
+                       "map3" : LEVEL3MAPARRAY}
+
         self.array = None
         self.game = game
         self.game_data = game_data

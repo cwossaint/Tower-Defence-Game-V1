@@ -23,16 +23,23 @@ class EnemyWaveManager:
     def create_enemy(self):
         row, col = self.start_point
         x, y = self.grid_manager.grid_to_screen(row, col)
-        enemy = Enemy(x, y, (10 + (3 * 0.2 * self.wave)) // 1, (7 + self.wave // 2), self.path, self.game_data)
+        if self.enemies_to_spawn % 40 == 0:
+            enemy = Boss(x, y, self.path, self.game_data)
+        elif self.enemies_to_spawn % 5 == 0:
+            enemy = Speedy(x, y, self.path, self.game_data)
+        elif self.enemies_to_spawn % 3 == 0:
+            enemy = Tanky(x, y, self.path, self.game_data)
+        elif self.enemies_to_spawn % 1 == 0:
+            enemy = Base(x, y, self.path, self.game_data)
 
     def start_new_wave(self):
         if self.guimanager.wave_start == True:
             self.wave += 1
             self.wave_rewards_granted = False
             self.game_data.next_wave()
-            self.enemies_to_spawn = 10 + (2 * self.wave)
-            if self.spawn_delay > 10:
-                self.spawn_delay = 60 - (0.5 * self.wave)
+            self.enemies_to_spawn = 100 + (2 * self.wave)
+            if self.spawn_delay > 1:
+                self.spawn_delay = 1 - (0.5 * self.wave)
             self.guimanager.wave_start = False
 
     def update(self):
