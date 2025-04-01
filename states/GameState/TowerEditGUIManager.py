@@ -3,9 +3,10 @@ from states.GameState.GameGUIButtonData import *
 
 
 class TowerEditGUIManager():
-    def __init__(self, game, grid_manager):
+    def __init__(self, game, grid_manager, game_date):
         self.game = game
         self.grid_manager = grid_manager
+        self.game_data = game_date
         self.tower_stats_text = []
         self.upgrade_stats_text = []
         self.text_spacing = 40
@@ -58,8 +59,9 @@ class TowerEditGUIManager():
                     upgrade_damage = upgrade_stats.get("damage")
                     upgrade_range = upgrade_stats.get("range")
                     upgrade_attack_delay = upgrade_stats.get("attack delay")
+                    upgrade_cost = upgrade_stats.get("cost")
 
-                    self.upgrade_stats_text.append("Upgrade Cost: " + str(0))
+                    self.upgrade_stats_text.append("Upgrade Cost: " + str(upgrade_cost))
                     self.upgrade_stats_text.append("Level: " + str(tower.level) + "->" + str(tower.level + 1))
                     self.upgrade_stats_text.append("Damage: " + str(tower.damage) + "->" + str(upgrade_damage))
                     self.upgrade_stats_text.append("Attack Delay: " + str(tower.attack_delay) + "->" + str(upgrade_attack_delay))
@@ -77,6 +79,9 @@ class TowerEditGUIManager():
                        row, col = self.grid_manager.screen_to_grid(x, y)
                        self.grid_manager.set_tile_value(row, col, 0)
                     elif output == "upgrade":
-                        tower.upgrade()
-                        
+                        if self.game_data.cash >= upgrade_cost:
+                            self.game_data.remove_cash(upgrade_cost)
+                            tower.upgrade()
+                        else: 
+                            self.game_data.set_message("not enough money")
 

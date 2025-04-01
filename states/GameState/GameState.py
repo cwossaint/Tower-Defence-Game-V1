@@ -17,7 +17,7 @@ class GameState(State):
         self.game_data = GameData()
         self.guimanager = GUIManager(game)
         self.grid_manager = GridManager(game, self.guimanager, self.game_data)
-        self.tower_edit_guimanager = TowerEditGUIManager(game, self.grid_manager)
+        self.tower_edit_guimanager = TowerEditGUIManager(game, self.grid_manager, self.game_data)
         self.pathfinding_manager = PathfindingManager(self.grid_manager)
         self.enemy_wave_manager = EnemyWaveManager(self.pathfinding_manager, self.grid_manager, self.game_data, self.guimanager)
         self.game_map = Map(game, self.grid_manager)

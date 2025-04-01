@@ -104,7 +104,7 @@ class Speedy(Enemy):
         self.rect = pygame.Rect(self.x, self.y, self.sprite.get_width(), self.sprite.get_height())
         self.value = 5
 
-class Base(Enemy):
+class Basic(Enemy):
     def __init__(self, x, y, directions_list, game_data, health=30, damage=10, speed=7):
         super().__init__(x, y, directions_list, game_data, health, damage, speed)
         self.sprite = BASEENEMYSPRITE
@@ -112,7 +112,7 @@ class Base(Enemy):
         self.value = 2
 
 class Boss(Enemy):
-    def __init__(self, x, y, directions_list, game_data, health=1500, damage=100, speed=1):
+    def __init__(self, x, y, directions_list, game_data, health=1500, damage=100, speed=4):
         super().__init__(x, y, directions_list, game_data, health, damage, speed)
         self.sprite = BOSSENEMYSPRITE
         self.rect = pygame.Rect(self.x, self.y, self.sprite.get_width(), self.sprite.get_height())

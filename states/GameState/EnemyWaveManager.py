@@ -30,7 +30,7 @@ class EnemyWaveManager:
         elif self.enemies_to_spawn % 3 == 0:
             enemy = Tanky(x, y, self.path, self.game_data)
         elif self.enemies_to_spawn % 1 == 0:
-            enemy = Base(x, y, self.path, self.game_data)
+            enemy = Basic(x, y, self.path, self.game_data)
 
     def start_new_wave(self):
         if self.guimanager.wave_start == True:

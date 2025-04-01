@@ -87,17 +87,20 @@ class Cannon(Tower):
         self.name = 'Cannon Tower'
         self.upgrade_stats = { 1 : { "damage" : 10,
                                     "range" : 100,
-                                    "attack delay" : 10
+                                    "attack delay" : 10,
+                                    "cost" : 10
                                 },
 
                                 2 : { "damage" : 12,
                                     "range" : 125,
-                                    "attack delay" : 8
+                                    "attack delay" : 8,
+                                    "cost" : 50
                                 },
 
                                 3 : { "damage" : 100,
                                     "range" : 175,
-                                    "attack delay" : 1
+                                    "attack delay" : 1,
+                                    "cost" : 50
                                 },
                                 }
 
@@ -110,17 +113,20 @@ class Dart(Tower):
         self.name = 'Dart Tower'
         self.upgrade_stats = { 1 : { "damage" : 20,
                                     "range" : 100,
-                                    "attack delay" : 10
+                                    "attack delay" : 10,
+                                    "cost" : 50
                                 },
 
                                 2 : { "damage" : 25,
                                     "range" : 175,
-                                    "attack delay" : 10
+                                    "attack delay" : 10,
+                                    "cost" : 75
                                 },
 
                                 3 : { "damage" : 1,
                                     "range" : 1000,
-                                    "attack delay" : 1
+                                    "attack delay" : 1,
+                                    "cost" : 150
                                 },
                                 }
 
@@ -133,17 +139,20 @@ class Glue(Tower):
        self.name = 'Glue Tower'
        self.upgrade_stats = { 1 : { "damage" : 1,
                                     "range" : 100,
-                                    "attack delay" : 10
+                                    "attack delay" : 10,
+                                    "cost" : 10
                                 },
 
                                 2 : { "damage" : 2,
                                     "range" : 150,
-                                    "attack delay" : 5
+                                    "attack delay" : 5,
+                                    "cost" : 45
                                 },
 
                                 3 : { "damage" : 5,
                                     "range" : 250,
-                                    "attack delay" : 3
+                                    "attack delay" : 3,
+                                    "cost" : 200
                                 },
                                 }
 
@@ -156,16 +165,19 @@ class Boomerang(Tower):
         self.name = 'Boomerang Tower'
         self.upgrade_stats = { 1 : { "damage" : 30,
                                     "range" : 250,
-                                    "attack delay" : 15
+                                    "attack delay" : 15,
+                                    "cost" : 10
                                 },
 
                                 2 : { "damage" : 34,
                                     "range" : 300,
-                                    "attack delay" : 12
+                                    "attack delay" : 12,
+                                    "cost" : 75
                                 },
 
                                 3 : { "damage" : 37,
                                     "range" : 450,
-                                    "attack delay" : 1
+                                    "attack delay" : 1,
+                                    "cost" : 250
                                 },
                                 }
