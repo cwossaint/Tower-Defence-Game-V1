@@ -6,7 +6,7 @@ class Enemy():
 
     all_enemies = []
 
-    def __init__(self, x, y, directions_list, game_data, health, damage, speed):
+    def __init__(self, x, y, directions_list, game_data, wave, health, damage, speed):
         self.x = x
         self.y = y
         self.health = health
@@ -18,6 +18,7 @@ class Enemy():
         self.current_direction = None
         self.directions_index = 0
         self.distance_travelled = 0
+        self.wave = wave
         self.removed = False
 
     def check_is_dead(self):
@@ -89,33 +90,54 @@ class Enemy():
     def render(self, screen):
         screen.blit(self.sprite, (self.x, self.y))
 
+    def scale_stats(self):
+        self.health *= (1.1 ** self.wave) //1 
+        self.damage *= (1.1 ** self.wave) //1 
+        self.speed *= (1.05 ** self.wave) //1
+
 
 class Tanky(Enemy):
-    def __init__(self, x, y, directions_list, game_data, health=50, damage=20, speed=3, ):
-        super().__init__(x, y, directions_list, game_data, health, damage, speed)
+    def __init__(self, x, y, directions_list, game_data, wave, health=50, damage=20, speed=3):
+        super().__init__(x, y, directions_list, game_data, wave, health, damage, speed)
         self.sprite = TANKYENEMYSPRITE
         self.rect = pygame.Rect(self.x, self.y, self.sprite.get_width(), self.sprite.get_height())
         self.value = 10
+        self.scale_stats()
+        print("Tanky health" + str(self.health))
+        print("Tanky speed: " + str(self.speed))
+        print("Tanky damage: " + str(self.damage))
 
 class Speedy(Enemy):
-    def __init__(self, x, y, directions_list, game_data, health=10, damage=5, speed=15):
-        super().__init__(x, y, directions_list, game_data, health, damage, speed)
+    def __init__(self, x, y, directions_list, game_data, wave, health=15, damage=10, speed=10):
+        super().__init__(x, y, directions_list, game_data, wave, health, damage, speed)
         self.sprite = SPEEDYENEMYSPRITE
         self.rect = pygame.Rect(self.x, self.y, self.sprite.get_width(), self.sprite.get_height())
         self.value = 5
+        self.scale_stats()
+        print("Speedy speed: " + str(self.speed))
+        print("Speedy Health: " + str(self.health))
+        print("Speedy damage: " + str(self.damage))
 
 class Basic(Enemy):
-    def __init__(self, x, y, directions_list, game_data, health=30, damage=10, speed=7):
-        super().__init__(x, y, directions_list, game_data, health, damage, speed)
+    def __init__(self, x, y, directions_list, game_data, wave, health=20, damage=10, speed=5):
+        super().__init__(x, y, directions_list, game_data, wave, health, damage, speed)
         self.sprite = BASEENEMYSPRITE
         self.rect = pygame.Rect(self.x, self.y, self.sprite.get_width(), self.sprite.get_height())
         self.value = 2
+        self.scale_stats()
+        print("basic health" + str(self.health))
+        print("basci speed: " + str(self.speed))
+        print("basic damage: " + str(self.damage))
 
 class Boss(Enemy):
-    def __init__(self, x, y, directions_list, game_data, health=1500, damage=100, speed=4):
-        super().__init__(x, y, directions_list, game_data, health, damage, speed)
+    def __init__(self, x, y, directions_list, game_data, wave, health=500, damage=100, speed=4):
+        super().__init__(x, y, directions_list, game_data, wave, health, damage, speed)
         self.sprite = BOSSENEMYSPRITE
         self.rect = pygame.Rect(self.x, self.y, self.sprite.get_width(), self.sprite.get_height())
         self.value = 100
+        self.scale_stats()
+        print("Boss health" + str(self.health))
+        print("Boss speed: " + str(self.speed))
+        print("Boss damage: " + str(self.damage))
 
         

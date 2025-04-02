@@ -1,8 +1,8 @@
 from entities.Button import *
 
-BUTTONHEIGHT = 100
-BUTTONWIDTH = 200
-BUTTONSPACING = 20
+BUTTONHEIGHT = 80
+BUTTONWIDTH = 175
+BUTTONSPACING = 18
 
 GAMEGUIPANELBUTTONDATA = [
         ("Pause", "pause", MenuButton),
@@ -10,6 +10,7 @@ GAMEGUIPANELBUTTONDATA = [
         ("Boomerang", "boomerang", TowerSelectButton),
         ("Dart", "dart", TowerSelectButton),
         ("Cannon", "cannon", TowerSelectButton),
+        ("Gatling", "gatling", TowerSelectButton),
         ("Start Next Wave", "start", WaveStartButton),
         ] 
 

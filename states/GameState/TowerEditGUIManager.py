@@ -79,9 +79,10 @@ class TowerEditGUIManager():
                        row, col = self.grid_manager.screen_to_grid(x, y)
                        self.grid_manager.set_tile_value(row, col, 0)
                     elif output == "upgrade":
-                        if self.game_data.cash >= upgrade_cost:
-                            self.game_data.remove_cash(upgrade_cost)
-                            tower.upgrade()
-                        else: 
-                            self.game_data.set_message("not enough money")
+                        if upgrade_cost:
+                            if self.game_data.cash >= upgrade_cost:
+                                self.game_data.remove_cash(upgrade_cost)
+                                tower.upgrade()
+                            else: 
+                                self.game_data.set_message("not enough money")
 

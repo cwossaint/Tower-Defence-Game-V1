@@ -79,105 +79,131 @@ class Tower():
 
 
 class Cannon(Tower):
-    cost = 10
-    def __init__(self, x, y, range=100, damage=1, attack_delay=10):
+    cost = 70
+    def __init__(self, x, y, range=100, damage=35, attack_delay=50):
         super().__init__(x, y, range, damage, attack_delay)
         self.sprite = CANNONTOWERSPRITE
         self.projectile_type = "CannonBall"
         self.name = 'Cannon Tower'
-        self.upgrade_stats = { 1 : { "damage" : 10,
+        self.upgrade_stats = { 1 : { "damage" : 35,
                                     "range" : 100,
-                                    "attack delay" : 10,
-                                    "cost" : 10
+                                    "attack delay" : 50,
+                                    "cost" : 70
                                 },
 
-                                2 : { "damage" : 12,
+                                2 : { "damage" : 45,
                                     "range" : 125,
-                                    "attack delay" : 8,
-                                    "cost" : 50
+                                    "attack delay" : 47,
+                                    "cost" : 150
                                 },
 
-                                3 : { "damage" : 100,
+                                3 : { "damage" : 55,
                                     "range" : 175,
-                                    "attack delay" : 1,
-                                    "cost" : 50
+                                    "attack delay" : 42,
+                                    "cost" : 250
                                 },
                                 }
 
 class Dart(Tower):
-    cost = 50
-    def __init__(self, x, y, range=100, damage=20, attack_delay=10):
+    cost = 25
+    def __init__(self, x, y, range=150, damage=9, attack_delay=30):
         super().__init__(x, y, range, damage, attack_delay)
         self.sprite = DARTTOWERSPRITE
         self.projectile_type = "Dart"
         self.name = 'Dart Tower'
-        self.upgrade_stats = { 1 : { "damage" : 20,
-                                    "range" : 100,
-                                    "attack delay" : 10,
-                                    "cost" : 50
+        self.upgrade_stats = { 1 : { "damage" : 9,
+                                    "range" : 150,
+                                    "attack delay" : 30,
+                                    "cost" : 25
                                 },
 
-                                2 : { "damage" : 25,
+                                2 : { "damage" : 12,
                                     "range" : 175,
-                                    "attack delay" : 10,
-                                    "cost" : 75
+                                    "attack delay" : 27,
+                                    "cost" : 100
                                 },
 
-                                3 : { "damage" : 1,
-                                    "range" : 1000,
-                                    "attack delay" : 1,
-                                    "cost" : 150
+                                3 : { "damage" : 18,
+                                    "range" : 250,
+                                    "attack delay" : 25,
+                                    "cost" : 175
                                 },
                                 }
 
 class Glue(Tower):
-    cost = 10
-    def __init__(self, x, y, range=100, damage=1, attack_delay=10):
+    cost = 25
+    def __init__(self, x, y, range=150, damage=3, attack_delay=70):
        super().__init__(x, y, range, damage, attack_delay)
        self.sprite = GLUETOWERSPRITE
        self.projectile_type = "Glue"
        self.name = 'Glue Tower'
-       self.upgrade_stats = { 1 : { "damage" : 1,
-                                    "range" : 100,
-                                    "attack delay" : 10,
-                                    "cost" : 10
+       self.upgrade_stats = { 1 : { "damage" : 3,
+                                    "range" : 150,
+                                    "attack delay" : 70,
+                                    "cost" : 25
                                 },
 
-                                2 : { "damage" : 2,
-                                    "range" : 150,
-                                    "attack delay" : 5,
-                                    "cost" : 45
+                                2 : { "damage" : 4,
+                                    "range" : 175,
+                                    "attack delay" : 13,
+                                    "cost" : 75
                                 },
 
                                 3 : { "damage" : 5,
                                     "range" : 250,
-                                    "attack delay" : 3,
-                                    "cost" : 200
+                                    "attack delay" : 12,
+                                    "cost" : 125
                                 },
                                 }
 
 class Boomerang(Tower):
-    cost = 10
-    def __init__(self, x, y, range=250, damage=30, attack_delay=15):
+    cost = 25
+    def __init__(self, x, y, range=250, damage=15, attack_delay=40):
         super().__init__(x, y, range, damage, attack_delay)
         self.sprite = BOOMERANGTOWERSPRITE
         self.projectile_type = "Boomerang"
         self.name = 'Boomerang Tower'
-        self.upgrade_stats = { 1 : { "damage" : 30,
+        self.upgrade_stats = { 1 : { "damage" : 15,
                                     "range" : 250,
-                                    "attack delay" : 15,
-                                    "cost" : 10
+                                    "attack delay" : 40,
+                                    "cost" : 25
                                 },
 
-                                2 : { "damage" : 34,
+                                2 : { "damage" : 18,
                                     "range" : 300,
-                                    "attack delay" : 12,
+                                    "attack delay" : 35,
                                     "cost" : 75
                                 },
 
-                                3 : { "damage" : 37,
+                                3 : { "damage" : 25,
                                     "range" : 450,
-                                    "attack delay" : 1,
-                                    "cost" : 250
+                                    "attack delay" : 31,
+                                    "cost" : 225
+                                },
+                                }
+        
+class Gatling(Tower):
+    cost = 110
+    def __init__(self, x, y, range=250, damage=2, attack_delay=5):
+        super().__init__(x, y, range, damage, attack_delay)
+        self.sprite = GATLINGTOWERSPRITE
+        self.projectile_type = "Gatling"
+        self.name = 'Gatling Tower'
+        self.upgrade_stats = { 1 : { "damage" : 2,
+                                    "range" : 250,
+                                    "attack delay" : 5,
+                                    "cost" : 110
+                                },
+
+                                2 : { "damage" : 3,
+                                    "range" : 300,
+                                    "attack delay" : 5,
+                                    "cost" : 80
+                                },
+
+                                3 : { "damage" : 5,
+                                    "range" : 350,
+                                    "attack delay" : 4,
+                                    "cost" : 175
                                 },
                                 }

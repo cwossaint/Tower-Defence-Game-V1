@@ -13,3 +13,7 @@ CANNONTOWERSPRITE = pygame.transform.scale(CANNONTOWERSPRITE, (TILE_SIZE, TILE_S
 GLUETOWERSPRITE = pygame.image.load("images/tower_sprites/glue_tower.png")
 GLUETOWERSPRITE = pygame.transform.scale(GLUETOWERSPRITE, (TILE_SIZE, TILE_SIZE))
 
+GATLINGTOWERSPRITE = pygame.image.load("images/tower_sprites/gatling_tower.png")
+GATLINGTOWERSPRITE = pygame.transform.scale(GATLINGTOWERSPRITE, (TILE_SIZE, TILE_SIZE))
+
+

@@ -8,7 +8,8 @@ class GridManager():
         self.towers = { "dart": Dart,
                         "glue": Glue,
                         "cannon": Cannon,
-                        "boomerang": Boomerang }
+                        "boomerang": Boomerang,
+                         "gatling" : Gatling }
         
         self.arraysdict = {"map1" : LEVEL1MAPARRAY, 
                        "map2": LEVEL2MAPARRAY, 
