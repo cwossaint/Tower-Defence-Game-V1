@@ -9,7 +9,7 @@ class TowerEditGUIManager():
         self.game_data = game_date
         self.tower_stats_text = []
         self.upgrade_stats_text = []
-        self.text_spacing = 40
+        self.text_spacing = 35
         self.button_data = TOWEREDITGUIBUTTONDATA
         self.font = pygame.font.SysFont("Arial", 30)
         self.buttons = []
@@ -35,7 +35,7 @@ class TowerEditGUIManager():
             current_y += self.text_spacing
             text = self.font.render((item), True, WHITE)
             screen.blit(text, (780, current_y))
-        current_y = 475
+        current_y = 500
         for item in self.upgrade_stats_text:
             current_y += self.text_spacing
             text = self.font.render((item), True, WHITE)
@@ -73,7 +73,9 @@ class TowerEditGUIManager():
                 output = button.handle_event()
                 if output:
                     tower = self.grid_manager.selected_placed_tower
-                    if output == "remove":
+                    if output == "back":
+                        self.grid_manager.selected_placed_tower = None
+                    elif output == "remove":
                        tower.remove_tower()
                        x, y = tower.x, tower.y
                        row, col = self.grid_manager.screen_to_grid(x, y)

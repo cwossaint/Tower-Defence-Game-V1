@@ -4,7 +4,7 @@ from level_data import *
 import copy
 
 class GridManager():
-    def __init__(self, game, guimanager, game_data) -> None:
+    def __init__(self, game, guimanager, game_data):
         self.towers = { "dart": Dart,
                         "glue": Glue,
                         "cannon": Cannon,
@@ -54,6 +54,8 @@ class GridManager():
                         if self.sufficient_cash(tower_type):
                             self.place_tower(row, col, tower_type)
                             self.guimanager.unselect_tower()
+                else:
+                    self.guimanager.selected_tower = None
             else: 
                 tile_value = self.get_tile_value(row, col)
                 if not isinstance(tile_value, int):

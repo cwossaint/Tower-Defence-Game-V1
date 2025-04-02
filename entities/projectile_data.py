@@ -25,7 +25,7 @@ PROJECTILE_DATA =  { "Dart": {
                         },
                     
                     "Glue": {
-                    "size": 50,
+                    "size": 35,
                     "speed": 15,
                     "sprite": None,  
                     "shape": "circle",

@@ -15,6 +15,7 @@ GAMEGUIPANELBUTTONDATA = [
         ] 
 
 TOWEREDITGUIBUTTONDATA = [
+        ("Back", "back", MenuButton),
         ("Remove Tower", "remove", MenuButton),
         ("Upgrade Tower", "upgrade", MenuButton)
         ] 
