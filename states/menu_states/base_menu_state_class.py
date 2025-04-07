@@ -1,7 +1,7 @@
 from states.base_state_class import *
 from entities.button.base_button_class import *
-from constants import *
-from button_data import *
+from constants.global_constants import *
+from constants.gui_constants import *
 
 
 class MenuState(State):

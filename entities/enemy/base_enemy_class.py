@@ -1,4 +1,4 @@
-from constants import TILE_SIZE
+from constants.global_constants import TILE_SIZE
 import pygame
 
 

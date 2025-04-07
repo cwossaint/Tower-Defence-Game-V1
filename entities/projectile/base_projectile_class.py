@@ -1,5 +1,5 @@
 from entities.enemy.base_enemy_class import Enemy
-from constants import GRID_SIZE, RED
+from constants.global_constants import GRID_SIZE, RED
 import pygame
 import math
 

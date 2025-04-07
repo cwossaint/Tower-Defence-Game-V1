@@ -4,8 +4,8 @@ from entities.tower.cannon_tower_class import *
 from entities.tower.boomerang_tower_class import *
 from entities.tower.gatling_tower_class import *
 import pygame
-from constants import *
-from level_data import *
+from constants.global_constants import *
+from constants.level_data import *
 import copy
 
 class GridManager():

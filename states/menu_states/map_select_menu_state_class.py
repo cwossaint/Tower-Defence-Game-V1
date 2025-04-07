@@ -1,5 +1,5 @@
 from states.menu_states.base_menu_state_class import MenuState
-from button_data import MAPSELECTMENUBUTTONDATA
+from constants.gui_constants import MAPSELECTMENUBUTTONDATA
 
 class MapSelectState(MenuState):
     def __init__(self, game, gamestate):

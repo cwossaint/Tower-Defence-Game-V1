@@ -1,5 +1,5 @@
 import pygame
-from constants import *
+from constants.global_constants import *
 from game import *
 
 #def main():

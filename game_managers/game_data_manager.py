@@ -1,4 +1,4 @@
-from constants import *
+from constants.global_constants import *
 import pygame
 import time
 

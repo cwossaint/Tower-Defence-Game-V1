@@ -1,6 +1,6 @@
 import pygame
 from states.state_manager import StateManager
-from constants import *
+from constants.global_constants import *
 
 class Game():
 

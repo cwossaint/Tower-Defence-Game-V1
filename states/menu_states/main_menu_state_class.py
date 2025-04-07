@@ -1,5 +1,5 @@
 from states.menu_states.base_menu_state_class import MenuState
-from button_data import MAINMENUBUTTONDATA
+from constants.gui_constants import MAINMENUBUTTONDATA
 
 class MainMenuState(MenuState):
     def __init__(self, game):

@@ -1,5 +1,5 @@
 import pygame
-from constants import *
+from constants.global_constants import *
 
 class MapManager():
     def __init__(self, game, grid_manager) -> None:

@@ -1,5 +1,5 @@
 from entities.projectile.base_projectile_class import *
-from constants import BLUE
+from constants.global_constants import BLUE
 
 class Boomerang_Projectile(Projectile):
     def __init__(self, x, y, target, damage, size=20, shape="circle", speed=20, color=BLUE):

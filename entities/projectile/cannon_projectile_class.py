@@ -1,5 +1,5 @@
 from entities.projectile.base_projectile_class import *
-from constants import BLACK
+from constants.global_constants import BLACK
 
 class Cannon_Projectile(Projectile):
     def __init__(self, x, y, target, damage, splash_damage, splash_range, size=50, shape="circle", speed=10, color=BLACK):

@@ -1,6 +1,6 @@
 from entities.button.base_button_class import *
-from button_data import *
-from constants import *
+from constants.gui_constants import *
+from constants.global_constants import *
 
 class GUIManager:
     def __init__(self, game):

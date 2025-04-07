@@ -1,5 +1,5 @@
 from entities.projectile.base_projectile_class import *
-from constants import DARK_YELLOW
+from constants.global_constants import DARK_YELLOW
 
 class Glue_Projectile(Projectile):
     def __init__(self, x, y, target, damage, slow, splash_range, size=35, shape="circle", speed=15, color=DARK_YELLOW):

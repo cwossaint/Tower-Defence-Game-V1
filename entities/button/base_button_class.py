@@ -1,4 +1,4 @@
-from constants import WHITE, LAPIS_BLUE, DARK_YELLOW
+from constants.global_constants import WHITE, LAPIS_BLUE, DARK_YELLOW
 import pygame
 import time
 

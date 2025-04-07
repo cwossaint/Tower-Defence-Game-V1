@@ -1,5 +1,5 @@
 import pygame
-from constants import TILE_SIZE
+from constants.global_constants import TILE_SIZE
 
 BASEENEMYSPRITE = pygame.image.load("images/enemy_sprites/base.png")
 BASEENEMYSPRITE = pygame.transform.scale(BASEENEMYSPRITE, (TILE_SIZE, TILE_SIZE))

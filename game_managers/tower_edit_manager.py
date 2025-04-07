@@ -1,6 +1,6 @@
 from entities.tower.base_tower_class import *
-from button_data import *
-from constants import *
+from constants.gui_constants import *
+from constants.global_constants import *
 
 
 class TowerEditGUIManager():

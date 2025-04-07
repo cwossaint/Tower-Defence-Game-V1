@@ -1,6 +1,6 @@
 from states.base_state_class import State
 from game_managers.map_manager import MapManager
-from constants import *
+from constants.global_constants import *
 from entities.tower.base_tower_class import Tower
 from game_managers.grid_manager import GridManager
 from game_managers.game_gui_manager import GUIManager
