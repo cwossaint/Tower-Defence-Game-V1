@@ -49,7 +49,7 @@ class GameDataManager():
         lives_check = self.font.render("Lives: " + str(self.lives), True, WHITE)
         screen.blit(lives_check, (0, 0))
         wave_text = self.font.render("Wave: " + str(self.wave), True, WHITE)
-        screen.blit(wave_text, (700, 0))
+        screen.blit(wave_text, (650, 0))
         game_message = self.message_font.render(self.game_message, True, RED)
         screen.blit(game_message, (350, 350))
 

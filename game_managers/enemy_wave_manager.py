@@ -41,9 +41,9 @@ class EnemyWaveManager:
             self.wave += 1
             self.wave_rewards_granted = False
             self.game_data.next_wave()
-            self.enemies_to_spawn = 100 + (7 * self.wave)
+            self.enemies_to_spawn = 10 + (7 * self.wave)
             if self.spawn_delay > 3:
-                self.spawn_delay = 0 - (5 * self.wave)
+                self.spawn_delay = 60 - (5 * self.wave)
             self.guimanager.wave_start = False
 
     def update(self):

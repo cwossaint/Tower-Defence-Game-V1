@@ -19,6 +19,9 @@ class Enemy():
         self.directions_index = 0
         self.distance_travelled = 0
         self.wave = wave
+        self.slow_debuff = 0
+        self.slow_debuff_timer = 0
+        self.slow_duration = 0
         self.removed = False
 
     def check_is_dead(self):
@@ -32,10 +35,11 @@ class Enemy():
             self.removed = True
 
     def calculate_distance(self):
-        if  self.distance_travelled + self.speed  > TILE_SIZE:
+        distance_to_travel = self.speed - (self.speed * self.slow_debuff)
+        if  self.distance_travelled + distance_to_travel  > TILE_SIZE:
             distance = TILE_SIZE - self.distance_travelled
         else:
-            distance = self.speed
+            distance = distance_to_travel
         return distance
 
     def move(self):
@@ -58,6 +62,7 @@ class Enemy():
         self.determine_direction()
         self.move()
         self.check_is_dead()
+        self.check_slow()
 
     def determine_direction(self):
         if self.distance_travelled >= TILE_SIZE:
@@ -73,8 +78,18 @@ class Enemy():
             self.attack_base()
             return True
         
-    def get_slowed(self, percentage_slow):
-        self.speed -= self.speed * percentage_slow
+    def get_slowed(self, percentage_slow, slow_duration):
+        if self.slow_debuff == 0:
+            self.slow_debuff = percentage_slow
+            self.slow_duration = slow_duration
+            self.slow_debuff_timer = 0
+
+    def check_slow(self):
+        if self.slow_debuff > 0:
+            if self.slow_debuff_timer > self.slow_duration:
+                self.slow_debuff = 0
+            else: 
+                self.slow_debuff_timer += 1
             
     def attack_base(self):
         self.remove()

@@ -2,10 +2,11 @@ from entities.projectile.base_projectile_class import *
 from constants.global_constants import DARK_YELLOW
 
 class Glue_Projectile(Projectile):
-    def __init__(self, x, y, target, damage, slow, splash_range, size=35, shape="circle", speed=15, color=DARK_YELLOW):
+    def __init__(self, x, y, target, damage, slow, splash_range, slow_duration, size=35, shape="circle", speed=15, color=DARK_YELLOW):
         super().__init__(x, y, target, damage, size, shape, speed, color)
         self.slow = slow
         self.splash_range = splash_range
+        self.slow_duration = slow_duration
 
     def find_enemy_in_range(self, x, y):
         enemies_in_range = []
@@ -21,5 +22,4 @@ class Glue_Projectile(Projectile):
                 self.destroy()
                 enemies_in_range = self.find_enemy_in_range(self.x, self.y)
                 for enemy in enemies_in_range:
-                    print("applied slow")
-                    enemy.get_slowed(self.slow)
+                    enemy.get_slowed(self.slow, self.slow_duration)
