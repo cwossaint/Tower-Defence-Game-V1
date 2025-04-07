@@ -1,12 +1,11 @@
 import pygame
-from states.StateManager import *
-from Mouse import *
+from states.state_manager import StateManager
+from constants import *
 
 class Game():
 
     def __init__(self):
         self.clock = pygame.time.Clock() 
-        self.mouse = Mouse()
         self.StateManager = StateManager(self)
         self.font = pygame.font.SysFont("Arial", 20)
 
@@ -19,7 +18,6 @@ class Game():
             self.StateManager.update()
 
             for event in pygame.event.get():
-                self.mouse.update()
                 if event.type == pygame.QUIT or self.StateManager.should_quit():
                     running = False
 
