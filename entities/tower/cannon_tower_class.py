@@ -7,6 +7,7 @@ class Cannon(Tower):
     def __init__(self, x, y, range=175, damage=80, attack_delay=100, splash_damage=35, splash_range=125):
         super().__init__(x, y, range, damage, attack_delay)
         self.sprite = CANNONTOWERSPRITE
+        self.find_centre()
         self.splash_damage = splash_damage
         self.splash_range = splash_range
         self.name = 'Cannon Tower'
@@ -39,7 +40,7 @@ class Cannon(Tower):
         
         if self.target and self.attack_timer >= self.attack_delay:
             self.target_coords = (self.target.x + (self.target.rect.width / 2), self.target.y + (self.target.rect.height / 2))
-            projectile = Cannon_Projectile(self.x + (self.sprite.get_width() / 2), self.y + (self.sprite.get_height()  / 2), self.target_coords, self.damage, self.splash_damage, self.splash_range)
+            projectile = Cannon_Projectile(self.centrex, self.centrey, self.target_coords, self.damage, self.splash_damage, self.splash_range)
             self.attack_timer = 0
 
     

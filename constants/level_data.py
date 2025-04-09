@@ -1,4 +1,11 @@
 
+#preset map arrays for each level
+# 0 = vacant space
+# 1 = path
+# 2 = map obstacle
+# 3 = base / end of path
+# 4 = enemy spawn / start of path
+
 
 LEVEL1MAPARRAY =   [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                     [4, 1, 1, 0, 0, 0, 0, 2, 0, 0],

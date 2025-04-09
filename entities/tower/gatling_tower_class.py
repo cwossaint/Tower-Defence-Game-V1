@@ -7,6 +7,7 @@ class Gatling(Tower):
     def __init__(self, x, y, range=250, damage=2, attack_delay=5):
         super().__init__(x, y, range, damage, attack_delay)
         self.sprite = GATLINGTOWERSPRITE
+        self.find_centre()
         self.projectile_type = "Gatling"
         self.name = 'Gatling Tower'
         self.upgrade_stats = { 1 : { "damage" : 2,
@@ -31,5 +32,5 @@ class Gatling(Tower):
     def fire_projectile(self):
         if self.target and self.attack_timer >= self.attack_delay:
             self.target_coords = (self.target.x + (self.target.rect.width / 2), self.target.y + (self.target.rect.height / 2))
-            projectile = Basic_Projectile(self.x + (self.sprite.get_width() / 2), self.y + (self.sprite.get_height()  / 2), self.target_coords, self.damage)
+            projectile = Basic_Projectile(self.centrex, self.centrey, self.target_coords, self.damage)
             self.attack_timer = 0

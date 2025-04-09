@@ -7,6 +7,7 @@ class Boomerang(Tower):
     def __init__(self, x, y, range=250, damage=7, attack_delay=50, pierce=5):
         super().__init__(x, y, range, damage, attack_delay)
         self.sprite = BOOMERANGTOWERSPRITE
+        self.find_centre()
         self.pierce = pierce
         self.name = 'Boomerang Tower'
         self.upgrade_stats = { 1 : { "damage" : 7,
@@ -35,7 +36,7 @@ class Boomerang(Tower):
         
         if self.target and self.attack_timer >= self.attack_delay:
             self.target_coords = (self.target.x + (self.target.rect.width / 2), self.target.y + (self.target.rect.height / 2))
-            projectile = Boomerang_Projectile(self.x + (self.sprite.get_width() / 2), self.y + (self.sprite.get_height() / 2), self.target_coords, self.damage, self.pierce)
+            projectile = Boomerang_Projectile(self.centrex, self.centrey, self.target_coords, self.damage, self.pierce)
             self.attack_timer = 0
 
     def upgrade(self):

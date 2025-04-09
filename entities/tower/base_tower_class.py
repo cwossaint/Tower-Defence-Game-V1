@@ -14,11 +14,17 @@ class Tower():
         self.attack_timer = 0
         self.x = x
         self.y = y
+        self.centrex = 0
+        self.centrey = 0
         self.target_coords = None
         self.target = None
         self.level = 1
         self.upgrade_stats = {}
         self.all_towers.append(self)
+    
+    def find_centre(self):
+        self.centrex = self.x + (self.sprite.get_width() / 2)
+        self.centrey = self.y + (self.sprite.get_height()  / 2)
 
     def find_target(self):
         closest_enemy = None
@@ -36,7 +42,7 @@ class Tower():
             self.target = None  
 
     def find_distance(self, enemy):
-        distance = math.sqrt((enemy.x - self.x) ** 2 + (enemy.y - self.y) ** 2)
+        distance = math.sqrt((enemy.x - self.centrex) ** 2 + (enemy.y - self.centrey) ** 2)
         return distance
 
     def remove_tower(self):

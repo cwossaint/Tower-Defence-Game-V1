@@ -1,10 +1,13 @@
 
+#screen dimensions
 SCREEN_WIDTH = 1080
 SCREEN_HEIGHT = 750
 
+#game grid dimensions
 TILE_SIZE = 75
 GRID_SIZE = 750
 
+#colors
 BLUE = (0, 0, 255)
 RED = (255, 0, 0)
 LIGHT_BROWN = (181, 101, 29)

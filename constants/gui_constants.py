@@ -2,17 +2,27 @@ from entities.button.menu_button import MenuButton
 from entities.button.tower_select_button import TowerSelectButton
 from entities.button.wave_start_button import WaveStartButton
 
+#button dimensions
+
 GAMEBUTTONHEIGHT = 80
 GAMEBUTTONWIDTH = 175
 GAMEBUTTONSPACING = 18
 
+MENUBUTTONHEIGHT = 125
+MENUBUTTONWIDTH = 250
+MENUBUTTONSPACING = 20
+MENUTEXTSPACE = 75
+
+
+#button object data -> DISPLAY TEXT, OUTPUT, BUTTON CLASS
+
 GAMEGUIPANELBUTTONDATA = [
         ("Pause", "pause", MenuButton),
-        ("Glue", "glue", TowerSelectButton),
-        ("Boomerang", "boomerang", TowerSelectButton),
-        ("Dart", "dart", TowerSelectButton),
-        ("Cannon", "cannon", TowerSelectButton),
-        ("Gatling", "gatling", TowerSelectButton),
+        ("Glue: $25", "glue", TowerSelectButton),
+        ("Boomerang: $25", "boomerang", TowerSelectButton),
+        ("Dart: $25", "dart", TowerSelectButton),
+        ("Cannon: $70", "cannon", TowerSelectButton),
+        ("Gatling: $110", "gatling", TowerSelectButton),
         ("Start Next Wave", "start", WaveStartButton),
         ] 
 
@@ -21,11 +31,6 @@ TOWEREDITGUIBUTTONDATA = [
         ("Remove Tower", "remove", MenuButton),
         ("Upgrade Tower", "upgrade", MenuButton)
         ] 
-
-MENUBUTTONHEIGHT = 125
-MENUBUTTONWIDTH = 250
-MENUBUTTONSPACING = 20
-MENUTEXTSPACE = 75
 
 MAINMENUBUTTONDATA = [
     ("Play", "mapselect"),
