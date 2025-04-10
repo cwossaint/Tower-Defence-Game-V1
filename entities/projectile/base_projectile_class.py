@@ -27,7 +27,6 @@ class Projectile():
     def render(self, screen):
         if self.shape == "circle":
             pygame.draw.circle(screen, self.color, (self.x, self.y), self.size/2)
-        #screen.blit(self.sprite, (self.x, self.y))
 
     def calculate_direction(self):
         targetx, targety = self.target
@@ -59,6 +58,7 @@ class Projectile():
             if pygame.Rect.colliderect(self.rect, enemy.rect):
                     self.destroy()
                     enemy.take_damage(self.damage)
+                    break
 
 
     def past_grid(self):

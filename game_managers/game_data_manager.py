@@ -2,6 +2,7 @@ from constants.global_constants import *
 import pygame
 import time
 
+#manages game stats like lives and cash
 class GameDataManager():
     def __init__(self) -> None:
         # Initialize the font for rendering text and some default game data
@@ -64,7 +65,7 @@ class GameDataManager():
         wave_text = self.font.render("Wave: " + str(self.wave), True, WHITE)
         screen.blit(wave_text, (650, 0))  # Render wave number at the top right
         
-        game_message = self.message_font.render(self.game_message, True, BLUE)
+        game_message = self.message_font.render(self.game_message, True, RED)
         message_rect = game_message.get_rect()
         messagex, messagey = (message_rect.width//2), (SCREEN_HEIGHT//2 - message_rect.height//2) # centre message on game map
         screen.blit(game_message, (messagex, messagey))  # Render the game message in the center of the screen

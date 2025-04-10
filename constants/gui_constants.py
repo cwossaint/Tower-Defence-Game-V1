@@ -48,8 +48,7 @@ GAMEOVERMENUDATA = [
 ]
 
 OPTIONSMENUDATA = [
-    ("Back to Main Menu", "mainmenu"),
-    ("Quit game", "quit")
+    ("Back to Main Menu", "mainmenu")
 ]
 
 MAPSELECTMENUBUTTONDATA = [

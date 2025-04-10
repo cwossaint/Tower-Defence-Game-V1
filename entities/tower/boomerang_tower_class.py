@@ -17,18 +17,18 @@ class Boomerang(Tower):
                                     "cost" : 25
                                 },
 
-                                2 : { "damage" : 10,
+                                2 : { "damage" : 12,
                                     "range" : 300,
                                     "attack delay" : 45,
                                     "pierce" : 7,
-                                    "cost" : 35
+                                    "cost" : 50
                                 },
 
-                                3 : { "damage" : 15,
+                                3 : { "damage" : 20,
                                     "range" : 450,
                                     "attack delay" : 35,
                                     "pierce" : 15,
-                                    "cost" : 125
+                                    "cost" : 175
                                 },
                                 }
         

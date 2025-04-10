@@ -2,6 +2,7 @@ from entities.button.base_button_class import *
 from constants.gui_constants import *
 from constants.global_constants import *
 
+#manages side panel gui and buttons for selecting towers to place
 class GUIManager:
     def __init__(self, game):
         # Initialize the GUI Manager with essential game data

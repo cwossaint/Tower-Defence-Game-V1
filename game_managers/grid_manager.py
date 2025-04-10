@@ -8,6 +8,7 @@ from constants.global_constants import *
 from constants.level_data import *
 import copy
 
+#manages placing towers onto the map grid and selecting already placed towers on the map grid
 class GridManager():
     def __init__(self, game, guimanager, game_data):
         # Initialize the GridManager with references to the game, GUI manager, and game data

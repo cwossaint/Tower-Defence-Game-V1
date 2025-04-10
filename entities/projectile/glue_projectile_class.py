@@ -19,7 +19,8 @@ class Glue_Projectile(Projectile):
     def check_collision(self):
         for enemy in Enemy.all_enemies:
             if pygame.Rect.colliderect(self.rect, enemy.rect):
-                self.destroy()
                 enemies_in_range = self.find_enemy_in_range(self.x, self.y)
                 for enemy in enemies_in_range:
                     enemy.get_slowed(self.slow, self.slow_duration)
+                self.destroy()
+                break

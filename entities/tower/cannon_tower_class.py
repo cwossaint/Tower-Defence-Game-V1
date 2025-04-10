@@ -22,7 +22,7 @@ class Cannon(Tower):
                                 2 : { "damage" : 95,
                                     "range" : 200,
                                     "attack delay" : 95,
-                                    "cost" : 50,
+                                    "cost" : 75,
                                     "splash damage" : 45,
                                     "splash range" : 150
                                 },
@@ -30,7 +30,7 @@ class Cannon(Tower):
                                 3 : { "damage" : 120,
                                     "range" : 225,
                                     "attack delay" : 85,
-                                    "cost" : 100,
+                                    "cost" : 125,
                                     "splash damage" : 65,
                                     "splash range" : 200
                                 },

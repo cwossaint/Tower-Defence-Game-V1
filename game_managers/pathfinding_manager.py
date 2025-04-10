@@ -1,5 +1,7 @@
 from game_managers.grid_manager import *
 
+
+#responsible for finding the path in which enemies should follow for a given map
 class PathfindingManager():
     def __init__(self, grid_manager):
         # Initialize PathfindingManager with a reference to grid_manager

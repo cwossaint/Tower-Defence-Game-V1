@@ -20,13 +20,13 @@ class Dart(Tower):
                                 2 : { "damage" : 18,
                                     "range" : 175,
                                     "attack delay" : 23,
-                                    "cost" : 25
+                                    "cost" : 35
                                 },
 
                                 3 : { "damage" : 25,
                                     "range" : 250,
                                     "attack delay" : 20,
-                                    "cost" : 45
+                                    "cost" : 55
                                 },
 
                                 4 : { "damage" : 25,

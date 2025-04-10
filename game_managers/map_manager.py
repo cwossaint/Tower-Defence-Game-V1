@@ -1,6 +1,7 @@
 import pygame
 from constants.global_constants import *
 
+#manages the rendering for the game map
 class MapManager():
     def __init__(self, game, grid_manager) -> None:
         # Initialize MapManager with references to the game and grid_manager

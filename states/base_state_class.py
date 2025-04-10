@@ -1,4 +1,6 @@
-class State:
+from abc import ABC, abstractmethod
+
+class State(ABC):
     def __init__(self, game):
         self.game = game
     
@@ -8,8 +10,10 @@ class State:
     def exit(self):
         pass
 
+    @abstractmethod
     def update(self):
         pass
 
+    @abstractmethod
     def render(self):
         pass

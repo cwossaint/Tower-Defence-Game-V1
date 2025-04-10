@@ -16,3 +16,4 @@ class Boomerang_Projectile(Projectile):
                             enemy.take_damage(self.damage)
                             if self.pierce <= 0:
                                 self.destroy()
+                                break

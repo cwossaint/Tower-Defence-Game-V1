@@ -25,15 +25,15 @@ class Glue(Tower):
                                     "attack delay" : 60,
                                     "slow duration" : 250,
                                     "splash range" : 100,
-                                    "cost" : 30
+                                    "cost" : 65
                                 },
 
                                 3 : { "slow" : 0.8,
                                     "range" : 250,
                                     "attack delay" : 45,
                                     "slow duration" : 300,
-                                    "splash range" : 80,
-                                    "cost" : 55
+                                    "splash range" : 125,
+                                    "cost" : 100
                                 },
                                 }
        

@@ -19,8 +19,9 @@ class Cannon_Projectile(Projectile):
     def check_collision(self):
         for enemy in Enemy.all_enemies:
             if pygame.Rect.colliderect(self.rect, enemy.rect):
-                self.destroy()
                 enemy.take_damage(self.damage)
                 enemies_in_range = self.find_enemy_in_range(self.x, self.y)
                 for enemy in enemies_in_range:
                     enemy.take_damage(self.splash_damage)
+                self.destroy()
+                break

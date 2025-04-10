@@ -2,6 +2,8 @@ from entities.tower.base_tower_class import *
 from constants.gui_constants import *
 from constants.global_constants import *
 
+
+#manages side panel buttons when a placed tower is selected. Handles upgrades and stats preview for selected tower 
 class TowerEditGUIManager():
     def __init__(self, game, grid_manager, game_data):
         self.game = game  # Reference to the main game
@@ -92,7 +94,7 @@ class TowerEditGUIManager():
                         self.upgrade_stats_text.append(str(stat) + ": " + str(current_upgrade_stats[stat]) + "->" + str(next_upgrade_stats[stat]))
 
                 # Show the cost for the upgrade
-                upgrade_cost = current_upgrade_stats["cost"]
+                upgrade_cost = next_upgrade_stats["cost"]
                 self.upgrade_stats_text.append("cost: " + str(upgrade_cost))
 
             else:

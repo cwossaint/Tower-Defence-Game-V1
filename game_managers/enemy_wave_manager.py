@@ -4,6 +4,8 @@ from entities.enemy.tanky_enemy_class import Tanky_Enemy
 from entities.enemy.basic_enemy_class import Basic_Enemy
 from entities.enemy.base_enemy_class import Enemy
 
+
+#handles enemy spawning and starting enemy waves
 class EnemyWaveManager:
     def __init__(self, pathfinding_manager, grid_manager, game_data, guimanager):
         # Managers and game state references

@@ -10,22 +10,22 @@ class Gatling(Tower):
         self.find_centre()
         self.projectile_type = "Gatling"
         self.name = 'Gatling Tower'
-        self.upgrade_stats = { 1 : { "damage" : 2,
+        self.upgrade_stats = { 1 : { "damage" : 3,
                                     "range" : 250,
                                     "attack delay" : 5,
                                     "cost" : 110
                                 },
 
-                                2 : { "damage" : 2,
-                                    "range" : 300,
-                                    "attack delay" : 4.75,
-                                    "cost" : 55
+                                2 : { "damage" : 3.5,
+                                    "range" : 325,
+                                    "attack delay" : 4.5,
+                                    "cost" : 80
                                 },
 
-                                3 : { "damage" : 2.4,
-                                    "range" : 350,
-                                    "attack delay" : 4,
-                                    "cost" : 95
+                                3 : { "damage" : 6,
+                                    "range" : 375,
+                                    "attack delay" : 3.75,
+                                    "cost" : 120
                                 },
                                 }
         
