@@ -8,7 +8,7 @@ class GameDataManager():
         # Initialize the font for rendering text and some default game data
         self.font = pygame.font.SysFont("Arial", 20)
         self.message_font = pygame.font.SysFont("Arial", 50)
-        self.cash = 50  # Starting cash
+        self.cash = 75  # Starting cash
         self.lives = 100  # Starting lives
         self.wave = 0  # Starting wave
         self.game_message = ""  # Message to be displayed on screen

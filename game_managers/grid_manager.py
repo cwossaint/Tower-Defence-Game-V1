@@ -36,11 +36,19 @@ class GridManager():
 
     def is_tile_valid(self, row, col):
         # Check if a tile is valid (empty) by checking if its value in the array is 0
-        return self.array[row][col] == 0
+        try:
+            return self.array[row][col] == 0
+        except IndexError:
+            print("invalid tile (out of bounds) for " + str(row) + str(col))
+            return False
     
     def get_tile_value(self, row, col):
         # Get the value of the tile at a specific grid position (either a tower or an empty tile)
-        return self.array[row][col]
+        try:
+            return self.array[row][col]
+        except IndexError:
+            print("invalid tile (out of bounds) for " + str(row) + str(col))
+            return None
     
     def place_tower(self, row, col, chosentower):
         # Place a tower at the specified grid position (row, col)
@@ -91,7 +99,11 @@ class GridManager():
                 
     def set_tile_value(self, row, col, value):
         # Set the value (e.g., tower) at a specific grid position
-        self.array[row][col] = value
+        try:
+            self.array[row][col] = value
+        except IndexError:
+            print("invalid tile (out of bounds) for " + str(row) + str(col))
+           
 
     def screen_to_grid(self, x, y):
         # Convert screen coordinates to grid coordinates (row, col)

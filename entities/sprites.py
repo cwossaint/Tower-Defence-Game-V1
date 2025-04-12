@@ -1,31 +1,19 @@
 import pygame
 from constants.global_constants import TILE_SIZE
 
-BASEENEMYSPRITE = pygame.image.load("images/enemy_sprites/base.png")
-BASEENEMYSPRITE = pygame.transform.scale(BASEENEMYSPRITE, (TILE_SIZE, TILE_SIZE))
+def load_and_scale_image(image_path):
+    image = pygame.image.load(image_path)
+    return pygame.transform.scale(image, (TILE_SIZE, TILE_SIZE))
 
-BOSSENEMYSPRITE = pygame.image.load("images/enemy_sprites/boss.png")
-BOSSENEMYSPRITE = pygame.transform.scale(BOSSENEMYSPRITE, (TILE_SIZE, TILE_SIZE))
+# Loading enemy sprites
+BASEENEMYSPRITE = load_and_scale_image("images/enemy_sprites/base.png")
+BOSSENEMYSPRITE = load_and_scale_image("images/enemy_sprites/boss.png")
+SPEEDYENEMYSPRITE = load_and_scale_image("images/enemy_sprites/speedy.png")
+TANKYENEMYSPRITE = load_and_scale_image("images/enemy_sprites/tanky.png")
 
-SPEEDYENEMYSPRITE = pygame.image.load("images/enemy_sprites/speedy.png")
-SPEEDYENEMYSPRITE = pygame.transform.scale(SPEEDYENEMYSPRITE, (TILE_SIZE, TILE_SIZE))
-
-TANKYENEMYSPRITE = pygame.image.load("images/enemy_sprites/tanky.png")
-TANKYENEMYSPRITE = pygame.transform.scale(TANKYENEMYSPRITE, (TILE_SIZE, TILE_SIZE))
-
-DARTTOWERSPRITE = pygame.image.load("images/tower_sprites/dart_tower.png")
-DARTTOWERSPRITE = pygame.transform.scale(DARTTOWERSPRITE, (TILE_SIZE, TILE_SIZE))
-
-BOOMERANGTOWERSPRITE = pygame.image.load("images/tower_sprites/boomerang_tower.png")
-BOOMERANGTOWERSPRITE = pygame.transform.scale(BOOMERANGTOWERSPRITE, (TILE_SIZE, TILE_SIZE))
-
-CANNONTOWERSPRITE = pygame.image.load("images/tower_sprites/cannon_tower.png")
-CANNONTOWERSPRITE = pygame.transform.scale(CANNONTOWERSPRITE, (TILE_SIZE, TILE_SIZE))
-
-GLUETOWERSPRITE = pygame.image.load("images/tower_sprites/glue_tower.png")
-GLUETOWERSPRITE = pygame.transform.scale(GLUETOWERSPRITE, (TILE_SIZE, TILE_SIZE))
-
-GATLINGTOWERSPRITE = pygame.image.load("images/tower_sprites/gatling_tower.png")
-GATLINGTOWERSPRITE = pygame.transform.scale(GATLINGTOWERSPRITE, (TILE_SIZE, TILE_SIZE))
-
-
+# Loading tower sprites
+DARTTOWERSPRITE = load_and_scale_image("images/tower_sprites/dart_tower.png")
+BOOMERANGTOWERSPRITE = load_and_scale_image("images/tower_sprites/boomerang_tower.png")
+CANNONTOWERSPRITE = load_and_scale_image("images/tower_sprites/cannon_tower.png")
+GLUETOWERSPRITE = load_and_scale_image("images/tower_sprites/glue_tower.png")
+GATLINGTOWERSPRITE = load_and_scale_image("images/tower_sprites/gatling_tower.png")

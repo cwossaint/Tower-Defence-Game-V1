@@ -50,6 +50,7 @@ class Enemy():
     def calculate_distance(self):
         # Calculate the distance to move based on speed and slow effect
         distance_to_travel = self.speed - (self.speed * self.slow_debuff)
+        #ensure the enemy doesnt overshoot tile length
         if self.distance_travelled + distance_to_travel > TILE_SIZE:
             distance = TILE_SIZE - self.distance_travelled
         else:
