@@ -112,7 +112,9 @@
 * Pathfinding method for enemies was initially not planned out, however devlopment went pretty smoothly with very few bugs
 
 ### Challenges faced:
-* 
+* Had to learn how to implement inheritance and polymorphism through subclasses and methods
+* Had to learn how to better divide tasks amoungst different methods and classes
+* Refactored code and rewrote several modules to make more efficient/easier to follow
 
 ### Lessons Learnt:
 * Got a lot of new experience using dictionaries in code
