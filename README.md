@@ -21,6 +21,7 @@
 ### Setup Instructions:
 - requires at least python version 3.12.0
 - must have pygame installed
+- must have pytest installed to run test modules
 - run the game from 'main.py' file
 
 ---
