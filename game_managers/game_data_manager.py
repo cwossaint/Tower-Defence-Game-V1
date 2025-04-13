@@ -73,5 +73,5 @@ class GameDataManager():
     def reset(self):
         # Reset the lives, cash, and wave data to default values
         self.lives = 100
-        self.cash = 50
+        self.cash = 75
         self.wave = 0
